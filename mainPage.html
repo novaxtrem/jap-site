@@ -24,15 +24,13 @@
             <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
             <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
 
-
-            <button onclick="myFunction()">Sign Out</button>
+            <a href="#" onclick="signOut();">Sign out</a>
             <script>
-                function myFunction() {
-                    gapi.auth2.getAuthInstance().signOut().then(function() {
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function() {
                         console.log('User signed out.');
-                        location.reload();
                     });
-
                 }
             </script>
         </div>
