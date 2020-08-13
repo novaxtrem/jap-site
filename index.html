@@ -24,10 +24,12 @@
             // The ID token you need to pass to your backend:
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
+
             var idToken = localStorage.setItem('ID Token: ', id_token);
             if (idToken === "") {
                 alert("error")
             } else {
+                console.log('Full Name: ' + profile.getName());
                 window.location.href = "mainPage.html";
             }
 
