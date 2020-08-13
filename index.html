@@ -25,12 +25,6 @@
             var id_token = googleUser.getAuthResponse().id_token;
             console.log("ID Token: " + id_token);
 
-            var idToken = localStorage.setItem('ID Token: ', id_token);
-            if (idToken === "") {
-                alert("error")
-            } else {
-                window.location.href = "mainPage.html";
-            }
         }
     </script>
 </body>
