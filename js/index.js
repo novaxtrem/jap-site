@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
+    loginWithGoogle.addEventListener("click", onSignIn(googleUser));
 
     function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
