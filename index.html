@@ -15,6 +15,7 @@
 
     <!-- JAVASCRIPT CUSTOM -->
     <script src="js/index.js"></script>
+    <script src="js/global.js"></script>
 
     <!-- HOJAS DE ESTILO EXTERNAS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -43,7 +44,7 @@
                 <script>
                     function onSignIn(googleUser) {
                         // Useful data for your client-side scripts:
-                        var profile = googleUser.getBasicProfile();
+                        //  var profile = googleUser.getBasicProfile();
                         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
                         console.log('Full Name: ' + profile.getName());
                         console.log('Given Name: ' + profile.getGivenName());
@@ -58,7 +59,6 @@
                     }
 
                     function redirect(profile) {
-                        alert("entre")
                         if (profile.getId() == "") {
                             alert("error")
                         } else {

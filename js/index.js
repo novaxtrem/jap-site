@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    alert("hola")
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
     //  const loginWithGoogle = document.getElementById("google-login-button");
