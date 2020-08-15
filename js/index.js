@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = loginForm.pass.value;
 
         if (username == "user@net.com" && password == "1234") {
-            //alert("You have successfully logged in.");
+            alert("You have successfully logged in.");
             window.location.href = "mainPage.html";
         } else {
             alert("nop");
