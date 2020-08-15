@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en">
+<html lang="es">
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- ELEMENTOS PARA EL LOGIN CON GOOGLE -->
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="868781423348-pce7300dti95vk59k716i8l5c90k7dsd.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <!-- HOJAS DE ESTILO EXTERNAS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- HOJA DE ESTILO PROPIA -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <!-- JAVASCRIPT CUSTOM -->
+    <script src="js/index.js"></script>
+
 </head>
 
 <body>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-    <script>
-        function onSignIn(googleUser) {
-            // Useful data for your client-side scripts:
-            var profile = googleUser.getBasicProfile();
-            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            console.log('Full Name: ' + profile.getName());
-            console.log('Given Name: ' + profile.getGivenName());
-            console.log('Family Name: ' + profile.getFamilyName());
-            console.log("Image URL: " + profile.getImageUrl());
-            console.log("Email: " + profile.getEmail());
 
-            // The ID token you need to pass to your backend:
-            var id_token = googleUser.getAuthResponse().id_token;
-            console.log("ID Token: " + id_token);
-            redirect(profile);
-
-        }
-
-        function redirect(profile) {
-            if (profile.getId() == "") {
-                alert("error")
-            } else {
-                //alert('Full Name: ' + profile.getName());
-                localStorage.setItem('USERNAME', profile.getName());
-                alert('USERNAME: ' + localStorage.getItem('USERNAME'));
-                window.location.href = "mainPage.html";
-            }
-
-        }
-    </script>
-
+    <div id="main-login-div">
+        <div id="inner-login-div">
+            <div>
+                <!--LIBRERIA DE ICONOS-->
+                <img src="https://img.icons8.com/color/100/000000/login-as-user.png" />
+            </div>
+            <!-- Login Form -->
+            <form id="login-form">
+                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="correo electronico">
+                <br>
+                <input type="password" class="form-control" id="pass" placeholder="contraseña">
+                <br>
+                <input type="submit" id="login-form-submit-button" value="iniciar sesion" class="btn btn-success">
+                <br>
+                <div id="social-login" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">
+                    <br>
+                    <a>O inicia sesion con</a>
+                    <a class="btn btn-light" role="button" style="text-transform:none" id="google-login-button">
+                        <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />Google login
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 
