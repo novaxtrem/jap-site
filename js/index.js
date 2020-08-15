@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+    alert("hola")
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
     //  const loginWithGoogle = document.getElementById("google-login-button");
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     function redirect(profile) {
+        alert("entre")
         if (profile.getId() == "") {
             alert("error")
         } else {
