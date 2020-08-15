@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
-
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
     const loginWithGoogle = document.getElementById("google-login-button");
@@ -21,7 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginWithGoogle.addEventListener("click", onSignIn(googleUser));
 
-    function onSignIn(googleUser) {
+    function onSignIn() {
+
+        const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+
+
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
