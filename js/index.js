@@ -19,8 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
+    loginWithGoogle.addEventListener("click", (e) => {
+        e.preventDefault();
 
+        function onSignIn(googleUser)
 
+    })
 
     function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
@@ -50,6 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     }
+
+
+
 
 
 });
