@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const autenticado = false;
-
-    if (localStorage.getItem("userName") == "") {
+    alert("lei el file")
+    if (localStorage.getItem("USERNAME") == "") {
         alert("no hay usuario")
     } else {
         autenticado = true;
