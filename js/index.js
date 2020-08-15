@@ -17,18 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    function redirect(profile) {
-        alert("entre")
-        if (profile.getId() == "") {
-            alert("error")
-        } else {
-            //alert('Full Name: ' + profile.getName());
-            localStorage.setItem('USERNAME', profile.getName());
-            alert('USERNAME: ' + localStorage.getItem('USERNAME'));
-            window.location.href = "mainPage.html";
-        }
 
-    }
 
 
 });
