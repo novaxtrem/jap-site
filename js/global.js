@@ -1,4 +1,4 @@
-const autenticado = false;
+var autenticado = false;
 // alert("lei el file")
 if (localStorage.getItem("USERNAME") == undefined || localStorage.getItem("USERNAME") == null || localStorage.getItem("USERNAME") == "") {
     alert("no hay usuario, debe iniciar sesion")
@@ -7,7 +7,7 @@ if (localStorage.getItem("USERNAME") == undefined || localStorage.getItem("USERN
     autenticado = true;
 }
 
-
+/*
 document.addEventListener("DOMContentLoaded", () => {
 
     window.onbeforeunload = function(e) {
@@ -23,3 +23,4 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 });
+*/
