@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (product.name.search(expression) != -1 || product.description.search(expression) != -1) {
 
-                        $('#resultado').append('<li class="list-group-item link-class"><img src="' + product.imgSrc + '" height="40" width="40" class="img-thumbnail" /> ' + product.name + ' | <span class="text-muted">' + product.cost + '</span></li>');
+                        $('#resultado').append('<li class="list-group-item link-class"><img src="' + product.imgSrc + '" height="40" width="40" class="img-thumbnail" /> ' + product.name + '<span class="text-muted">' + product.cost + " " + product.currency + '</span></li>');
                     }
                 });
             });
