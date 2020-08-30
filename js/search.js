@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    /*
+    /* 
+    //metodo con filter, remplazado por jQuery
         const search_input = document.getElementById('search');
         const results = document.getElementById('results');
 
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         $('#resultado').on('click', 'li', function() {
             var click_text = $(this).text().split('|');
-            alert(click_text);
+            alert(click_text); //muestro el resultado selecionado
             $('#ajaxSearch').val($.trim(click_text[0]));
             $("#resultado").html('');
         });
