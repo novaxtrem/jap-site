@@ -48,16 +48,5 @@ document.addEventListener("DOMContentLoaded", () => {
           </nav>`;
         document.getElementById("mainNav").innerHTML = htmlContentToAppend;
     }
-    const logoutURL = window.location.href + `logout.html`;
-    if (window.location.href == logoutURL) {
-        alert("zdsa");
-        alert(logoutURL);
-    } else {
-        alert(logoutURL);
-
-    }
-
-
-
 
 });
