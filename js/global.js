@@ -7,23 +7,6 @@ if (localStorage.getItem("USERNAME") == undefined || localStorage.getItem("USERN
     autenticado = true;
 }
 
-/*
-document.addEventListener("DOMContentLoaded", () => {
-
-    window.onbeforeunload = function(e) {
-        window.onunload = function() {
-            window.localStorage.isMySessionActive = "false";
-            localStorage.clear();
-        }
-        return undefined;
-    };
-
-    window.onload = function() {
-        window.localStorage.isMySessionActive = "true";
-    };
-
-});
-*/
 
 
 document.addEventListener("DOMContentLoaded", () => {

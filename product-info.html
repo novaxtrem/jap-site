@@ -8,11 +8,9 @@
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
 
-
-    <script src="js/global.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -21,14 +19,43 @@
     <div id="mainNav">
 
     </div>
-    <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 13/09/2020) y Entrega 4 (Fecha de entrega: 20/09/2020).</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <main role="main">
+        <div class="container mt-5">
+            <h3 id="productName"></h3>
+            <hr class="my-3">
+            <dl>
+                <dt>Descripción</dt>
+                <dd>
+                    <p id="productDescription"></p>
+                </dd>
+
+                <dt>Precio del vehiculo</dt>
+                <dd>
+                    <p id="productPriceAndCurrency"></p>
+                </dd>
+
+
+                <dd>
+
+                </dd>
+
+                <dt>Imágenes ilustrativas</dt>
+                <dd>
+                    <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+                    </div>
+                </dd>
+            </dl>
+            <a type="button" class="btn btn-light btn-lg btn-block" href="cart.html">Comprar</a>
+            <!-- PRODUCTOS RELACIONADOS-->
+            <div class="container">
+                <h2 class="text-center font-weight-bold mb-5 mt-5">Productos relacionados</h2>
+
+                <div id="relatedProductsInside" class="row d-flex equal"></div>
+
+            </div>
         </div>
-    </div>
+        </div>
+    </main>
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
@@ -50,6 +77,7 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/product-info.js"></script>
+    <script src="js/global.js"></script>
 </body>
 
 </html>
