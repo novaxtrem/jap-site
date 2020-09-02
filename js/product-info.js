@@ -2,8 +2,8 @@ var product = {};
 var currentProductsArray = [];
 var productsCommentsArray = [];
 
+//DIBUJO GALERIA
 function showImagesGallery(array) {
-
     let htmlContentToAppend = "";
 
     for (let i = 0; i < array.length; i++) {
@@ -20,12 +20,7 @@ function showImagesGallery(array) {
     }
 }
 
-
-
-
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+//CARGO DESCRIPCION Y IMAGENES
 document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
@@ -58,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     htmlContentToAppend += `
                     <div class="col-sm-4 col-md-2">
                         <div class="card-img-top">
-                            <img src="` + currentProductsArray[i].imgSrc + `" class="img-thumbnail">
+                            <img src="` + currentProductsArray[i].imgSrc + `"class="img-thumbnail" name="zoom" style="cursor:pointer">
                         </div>
                         <h4>
                             <a href="# " class="font-weight-bold text-dark text-uppercase small ">` + currentProductsArray[i].name + `</a>
@@ -105,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     function mostrarEstrellas(score, starsToAdd) {
         var maxStars = 5;
-        var checkedStars = score;
         var uncheckedStars = (maxStars - score);
         for (var i = 0; i < score; i++) {
             starsToAdd += `<i class="fa fa-star checked"></i>`
