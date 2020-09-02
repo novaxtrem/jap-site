@@ -16,17 +16,12 @@ function showImagesGallery(array) {
             </div>
         </div>
         `
-
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
 }
 
 
-function mostrarEstrellas(number) {
-    for (var i = 0; i < number; i++) {
 
-    }
-}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -79,13 +74,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         productsCommentsArray = resultObj.data;
         var userImgArray = [];
-        getJSONData("https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/1").then(function(resultObj) {
+        getJSONData("https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/1").then(function(resultObj) { //consulto otro json para las pictures, json mio
             if (resultObj.status === "ok") {
                 userImgArray = resultObj.data;
-
                 let htmlContentToAppend = "";
+                let starsToAdd = "";
                 for (let i = 0; i < productsCommentsArray.length; i++) {
-
+                    starsToAdd = ""; //reseteo la variable para que no se me acumulen las estrellas, hago esto porque mi append es acumulativo;
+                    var anioMesDiaHora = productsCommentsArray[i].dateTime;
+                    var anioMesDia = anioMesDiaHora.split(" ", 1);
+                    //
+                    starsToAdd = mostrarEstrellas(productsCommentsArray[i].score, starsToAdd);
+                    //
                     htmlContentToAppend += `
                             <div  style="padding-bottom: 30px;" id="commentElement">
                                 <div class="float-left">
@@ -93,20 +93,26 @@ document.addEventListener("DOMContentLoaded", function(e) {
                                 </div>
                                 <h4 style="padding-left: 40px;">
                                     <a href="#">` + productsCommentsArray[i].user + `</a>
-                                </h4>
+                                </h4>` + starsToAdd + `
                                 <h5 class="equal">` + productsCommentsArray[i].description + `</h5> 
-                                <small>` + productsCommentsArray[i].dateTime + `</small>
+                                <small>` + anioMesDia + `</small>
                             </div>`;
                     document.getElementById("productsCommentsMain").innerHTML = htmlContentToAppend;
-
                 }
             }
-
         });
-
     });
 
-
-
-
+    function mostrarEstrellas(score, starsToAdd) {
+        var maxStars = 5;
+        var checkedStars = score;
+        var uncheckedStars = (maxStars - score);
+        for (var i = 0; i < score; i++) {
+            starsToAdd += `<i class="fa fa-star checked"></i>`
+        }
+        for (var i = 0; i < uncheckedStars; i++) {
+            starsToAdd += `<i class="fa fa-star"></i>`
+        }
+        return starsToAdd;
+    }
 });
