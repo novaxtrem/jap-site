@@ -1,0 +1,8 @@
+#commentElement:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+#commentElement {
+    padding: 10px;
+    border-radius: 10px;
+}

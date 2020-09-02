@@ -1,5 +1,6 @@
 var product = {};
 var currentProductsArray = [];
+var productsCommentsArray = [];
 
 function showImagesGallery(array) {
 
@@ -17,6 +18,13 @@ function showImagesGallery(array) {
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+    }
+}
+
+
+function mostrarEstrellas(number) {
+    for (var i = 0; i < number; i++) {
+
     }
 }
 
@@ -41,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             showImagesGallery(product.images);
         }
     });
+    //AGREGO PRODUCTOS RELACIONADOS
     var currentCarSelected = "Chevrolet Onix Joy";
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
@@ -66,4 +75,38 @@ document.addEventListener("DOMContentLoaded", function(e) {
             }
         }
     });
+    //AGREGO COMENTARIOS
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
+        productsCommentsArray = resultObj.data;
+        var userImgArray = [];
+        getJSONData("https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/1").then(function(resultObj) {
+            if (resultObj.status === "ok") {
+                userImgArray = resultObj.data;
+
+                let htmlContentToAppend = "";
+                for (let i = 0; i < productsCommentsArray.length; i++) {
+
+                    htmlContentToAppend += `
+                            <div  style="padding-bottom: 30px;" id="commentElement">
+                                <div class="float-left">
+                                    <img src="` + userImgArray[i].imgSrc + `" style="width: 30px;">
+                                </div>
+                                <h4 style="padding-left: 40px;">
+                                    <a href="#">` + productsCommentsArray[i].user + `</a>
+                                </h4>
+                                <h5 class="equal">` + productsCommentsArray[i].description + `</h5> 
+                                <small>` + productsCommentsArray[i].dateTime + `</small>
+                            </div>`;
+                    document.getElementById("productsCommentsMain").innerHTML = htmlContentToAppend;
+
+                }
+            }
+
+        });
+
+    });
+
+
+
+
 });
