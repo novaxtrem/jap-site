@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     });
     //AGREGO PRODUCTOS RELACIONADOS
-    var currentCarSelected = "Chevrolet Onix Joy";
+    var currentCarSelected = "Chevrolet Onix Joy"; //voy a ignorar el auto que estamos mirando en los productos seleccionados
     getJSONData(PRODUCTS_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             currentProductsArray = resultObj.data;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             let htmlContentToAppend = "";
             for (let i = 0; i < currentProductsArray.length; i++) {
                 if (currentProductsArray[i].name == currentCarSelected) {
-                    //do nothing
+                    //do nothing; then lets play Lol and take Syndra, Ahri or Sona > Epic midline / Hardcore Aggressive Support. esto no tiene relacion; I know (o_o(^_^)*_*)!!
                 } else {
                     htmlContentToAppend += `
                     <div class="col-sm-4 col-md-2">
@@ -65,13 +65,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
             }
         }
     });
-    //AGREGO COMENTARIOS
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
+    //AGREGO COMENTARIOS PRE-CARGADOS
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) { //esta funcion se podria dividir en funciones mas simples que se encarguen de cargar cada una los arrays con datos
         productsCommentsArray = resultObj.data;
         var userImgArray = [];
-        getJSONData("https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/1").then(function(resultObj) { //consulto otro json para las pictures, json mio
+        getJSONData(AVATAR_IMG_AND_SOME_MORE_DATA).then(function(resultObj) { //consulto otro json para las pictures, json mio
             if (resultObj.status === "ok") {
-                userImgArray = resultObj.data;
+                userImgArray = resultObj.data["usersProfileImg"]; //capturo la data de un array en concreto denro del json
                 let htmlContentToAppend = "";
                 let starsToAdd = "";
                 for (let i = 0; i < productsCommentsArray.length; i++) {
@@ -109,4 +109,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
         return starsToAdd;
     }
+
+    document.getElementsByTagName("input").addEventListener("click", function(e) {
+
+
+        alert($("input:radio[name=option]:checked").val());
+
+
+    });
+
+
+
+
+
+
 });

@@ -6,3 +6,11 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+#connectedUserImg {
+    width: 40px;
+}
+
+.space {
+    margin-left: 15px;
+}

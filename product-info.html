@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/init.js"></script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -52,6 +53,19 @@
                 <div id="starContainer"></div>
             </div>
             <div id=addNewComentArea>
+                <div class="row">
+                    <img id="connectedUserImg" src="https://image.flaticon.com/icons/svg/244/244341.svg">
+                    <textarea id="commentArea" placeholder="Agregar comentario" class="space"></textarea>
+                    <!--<button type="button" id="addCommentBtn" class="btn btn-primary space">Share</button>-->
+                    <fieldset id="estrellitas" class="rating">
+                        <input type="radio" name="option" value="5" /><label for="star5" title="Excelente">5 estrellas</label>
+                        <input type="radio" name="option" value="4" /><label for="star4" title="Muy bueno">4 estrellas</label>
+                        <input type="radio" name="option" value="3" /><label for="star3" title="Aceptable">3 estrellas</label>
+                        <input type="radio" name="option" value="2" /><label for="star2" title="Regular">2 estrellas</label>
+                        <input type="radio" name="option" value="1" /><label for="star1" title="Malo">1 estrella</label>
+                    </fieldset>
+
+                </div>
 
             </div>
         </div>
@@ -74,10 +88,11 @@
         </div>
     </div>
     <link href="css/product-info.css" rel="stylesheet">
+    <link href="css/stars.css" rel="stylesheet">
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/init.js"></script>
+
     <script src="js/product-info.js"></script>
     <script src="js/global.js"></script>
 
