@@ -25,11 +25,7 @@ function getRelatedProducts(array) {
     for (let i = 0; i < array.length; i++) {
         productosRelacionados.push(array[i]);
     }
-
 }
-
-
-
 
 //CARGO DESCRIPCION Y IMAGENES
 document.addEventListener("DOMContentLoaded", function(e) {
