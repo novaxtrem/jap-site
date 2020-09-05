@@ -62,12 +62,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     </h4>
                     <h5 class="text-warning">` + currentProductsArray[productosRelacionados[i]].cost + ` ` + currentProductsArray[productosRelacionados[i]].currency + `</h5>
                 </div>`
+                    //se usa un template para que todos los elementos sean "iguales" (y que sea mas facil de concatenar codigo);
                 document.getElementById("relatedProductsInside").innerHTML = htmlContentToAppend;
             };
         };
     });
     //AGREGO COMENTARIOS PRE-CARGADOS
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) { //esta funcion se podria dividir en funciones mas simples que se encarguen de cargar cada una los arrays con datos
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         productsCommentsArray = resultObj.data;
         var userImgArray = [];
         getJSONData(AVATAR_IMG_AND_SOME_MORE_DATA).then(function(resultObj) { //consulto otro json para las pictures, json mio
@@ -112,8 +113,41 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
 
 
+    $('input[name=option]').click(function() {
+        let starsToAdd = "";
+        var htmlContentToAppend = document.getElementById("productsCommentsMain").innerHTML;
+        score = ($('input[name=option]:checked').val());
+        //
+        localStorage.setItem("USER_COMMENT", document.getElementById("commentArea").value);
+        //
+        starsToAdd = mostrarEstrellas(score, starsToAdd);
+
+        htmlContentToAppend += `
+        <div  style="padding-bottom: 30px;" id="commentElement">
+            <div class="float-left">
+                <img src="` + "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" + `" style="width: 30px;">
+            </div>
+            <h4 style="padding-left: 40px;">
+                <a href="#">` + localStorage.getItem("USERNAME") + `</a>
+            </h4>` + starsToAdd + `
+            <h5 class="equal">` + localStorage.getItem("USER_COMMENT") + `</h5> 
+            <small>` + "10" + `</small>
+        </div>`;
+
+
+        localStorage.setItem("NEW_COMMENT", htmlContentToAppend);
+
+        location.reload();
+
+    });
+
+    function reloadPage() {
 
 
 
-
+        document.getElementById("productsCommentsMain").innerHTML = "";
+        document.getElementById("productsCommentsMain").innerHTML = localStorage.getItem("NEW_COMMENT");
+        console.log(localStorage.getItem("NEW_COMMENT"));
+    }
+    reloadPage();
 });

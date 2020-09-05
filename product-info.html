@@ -53,18 +53,18 @@
                 <div id="starContainer"></div>
             </div>
             <div id=addNewComentArea>
+                <br>
                 <div class="row">
                     <img id="connectedUserImg" src="https://image.flaticon.com/icons/svg/244/244341.svg">
                     <textarea id="commentArea" placeholder="Agregar comentario" class="space"></textarea>
                     <!--<button type="button" id="addCommentBtn" class="btn btn-primary space">Share</button>-->
-                    <fieldset id="estrellitas" class="rating">
-                        <input type="radio" name="option" value="5" /><label for="star5" title="Excelente">5 estrellas</label>
-                        <input type="radio" name="option" value="4" /><label for="star4" title="Muy bueno">4 estrellas</label>
-                        <input type="radio" name="option" value="3" /><label for="star3" title="Aceptable">3 estrellas</label>
-                        <input type="radio" name="option" value="2" /><label for="star2" title="Regular">2 estrellas</label>
-                        <input type="radio" name="option" value="1" /><label for="star1" title="Malo">1 estrella</label>
-                    </fieldset>
-
+                    <div id="estrellita" class="rating">
+                        <input type="radio" id="star5" name="option" value="1" /><label for="star5" title="Excelente">5 estrellas</label>
+                        <input type="radio" id="star4" name="option" value="2" /><label for="star4" title="Muy bueno">4 estrellas</label>
+                        <input type="radio" id="star3" name="option" value="3" /><label for="star3" title="Aceptable">3 estrellas</label>
+                        <input type="radio" id="star2" name="option" value="4" /><label for="star2" title="Regular">2 estrellas</label>
+                        <input type="radio" id="star1" name="option" value="5" /><label for="star1" title="Malo">1 estrella</label>
+                    </div>
                 </div>
 
             </div>
