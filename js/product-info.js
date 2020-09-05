@@ -2,6 +2,7 @@ var product = {};
 var currentProductsArray = [];
 var productsCommentsArray = [];
 var productosRelacionados = [];
+//
 
 //DIBUJO GALERIA
 function showImagesGallery(array) {
@@ -67,20 +68,21 @@ document.addEventListener("DOMContentLoaded", function(e) {
             };
         };
     });
-    //AGREGO COMENTARIOS PRE-CARGADOS
+    //AGREGO COMENTARIOS
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         productsCommentsArray = resultObj.data;
         var userImgArray = [];
         getJSONData(AVATAR_IMG_AND_SOME_MORE_DATA).then(function(resultObj) { //consulto otro json para las pictures, json mio
+            let htmlContentToAppend = "";
             if (resultObj.status === "ok") {
                 userImgArray = resultObj.data["usersProfileImg"]; //capturo la data de un array en concreto denro del json
-                let htmlContentToAppend = "";
+
                 let starsToAdd = "";
                 for (let i = 0; i < productsCommentsArray.length; i++) {
                     starsToAdd = ""; //reseteo la variable para que no se me acumulen las estrellas, hago esto porque mi append es acumulativo;
                     var anioMesDiaHora = productsCommentsArray[i].dateTime;
                     var anioMesDia = anioMesDiaHora.split(" ", 1);
-                    //
+                    var fechaOK = ChangeFormateDate(anioMesDia);
                     starsToAdd = mostrarEstrellas(productsCommentsArray[i].score, starsToAdd);
                     //
                     htmlContentToAppend += `
@@ -92,12 +94,18 @@ document.addEventListener("DOMContentLoaded", function(e) {
                                     <a href="#">` + productsCommentsArray[i].user + `</a>
                                 </h4>` + starsToAdd + `
                                 <h5 class="equal">` + productsCommentsArray[i].description + `</h5> 
-                                <small>` + anioMesDia + `</small>
+                                <small>` + fechaOK + `</small>
                             </div>`;
-                    document.getElementById("productsCommentsMain").innerHTML = htmlContentToAppend;
                 }
             }
+            if (!localStorage.getItem("NEW_COMMENT") == null || !localStorage.getItem("NEW_COMMENT") == undefined || !localStorage.getItem("NEW_COMMENT") == "") {
+                document.getElementById("productsCommentsMain").innerHTML = localStorage.getItem("NEW_COMMENT");
+            } else {
+                document.getElementById("productsCommentsMain").innerHTML = htmlContentToAppend;
+            }
         });
+        document.getElementById("connectedUserImg").src = localStorage.getItem("USER_PROFILE_IMG");
+
     });
 
     function mostrarEstrellas(score, starsToAdd) {
@@ -112,11 +120,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
         return starsToAdd;
     }
 
+    function ChangeFormateDate(oldDate) {
+        return oldDate.toString().split("-").reverse().join("-");
+    }
 
+
+    //append mistico, dado que cuando hago un append en el html no lo estoy volcando en la db
+    //y debo actualizar los commentarios (precargados del json y los nuevos);....no me gusta pero funciona
     $('input[name=option]').click(function() {
+        let today = new Date().toLocaleDateString();
+        //
         let starsToAdd = "";
         var htmlContentToAppend = document.getElementById("productsCommentsMain").innerHTML;
         score = ($('input[name=option]:checked').val());
+
         //
         localStorage.setItem("USER_COMMENT", document.getElementById("commentArea").value);
         //
@@ -125,29 +142,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
         htmlContentToAppend += `
         <div  style="padding-bottom: 30px;" id="commentElement">
             <div class="float-left">
-                <img src="` + "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/220px-User_icon_2.svg.png" + `" style="width: 30px;">
+                <img src="` + localStorage.getItem("USER_PROFILE_IMG") + `" style="width: 30px;">
             </div>
             <h4 style="padding-left: 40px;">
                 <a href="#">` + localStorage.getItem("USERNAME") + `</a>
             </h4>` + starsToAdd + `
             <h5 class="equal">` + localStorage.getItem("USER_COMMENT") + `</h5> 
-            <small>` + "10" + `</small>
+            <small>` + today.toString().replaceAll("/", "-") + `</small>
         </div>`;
-
-
         localStorage.setItem("NEW_COMMENT", htmlContentToAppend);
-
         location.reload();
-
     });
 
-    function reloadPage() {
-
-
-
-        document.getElementById("productsCommentsMain").innerHTML = "";
-        document.getElementById("productsCommentsMain").innerHTML = localStorage.getItem("NEW_COMMENT");
-        console.log(localStorage.getItem("NEW_COMMENT"));
-    }
-    reloadPage();
 });

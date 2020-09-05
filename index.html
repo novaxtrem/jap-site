@@ -63,6 +63,7 @@
                         } else {
                             //alert('Full Name: ' + profile.getName());
                             localStorage.setItem('USERNAME', profile.getName());
+                            localStorage.setItem("USER_PROFILE_IMG", profile.getImageUrl());
                             alert('USERNAME: ' + localStorage.getItem('USERNAME'));
                             autenticado = true;
                             window.location.href = "mainPage.html";
