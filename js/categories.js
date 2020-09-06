@@ -5,7 +5,6 @@ var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
-var franco;
 
 function sortCategories(criteria, array) {
     let result = [];
