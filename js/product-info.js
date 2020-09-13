@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
             getRelatedProducts(product.relatedProducts);
+
         }
     });
 
@@ -67,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 document.getElementById("relatedProductsInside").innerHTML = htmlContentToAppend;
             };
         };
+        localtion.reload();
     });
     //AGREGO COMENTARIOS
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
