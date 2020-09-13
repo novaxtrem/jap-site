@@ -35,47 +35,38 @@ document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
+            getRelatedProducts(product.relatedProducts);
+            //AGREGO PRODUCTOS RELACIONADOS
+            getJSONData(PRODUCTS_URL).then(function(resultObj) {
+                let htmlContentToAppend = "";
+                if (resultObj.status === "ok") {
+                    currentProductsArray = resultObj.data;
+                    for (var i = 0; i < productosRelacionados.length; i++) {
+                        htmlContentToAppend += `
+                            <div class="col-sm-4 col-md-2">
+                                <div class="card-img-top">
+                                    <img src="` + currentProductsArray[productosRelacionados[i]].imgSrc + `"class="img-thumbnail" name="zoom" style="cursor:pointer">
+                                </div>
+                                <h4>
+                                    <a href="# " class="font-weight-bold text-dark text-uppercase small ">` + currentProductsArray[productosRelacionados[i]].name + `</a>
+                                </h4>
+                                <h5 class="text-warning">` + currentProductsArray[productosRelacionados[i]].cost + ` ` + currentProductsArray[productosRelacionados[i]].currency + `</h5>
+                            </div>` //se usa un template para que todos los elementos sean "iguales" (y que sea mas facil de concatenar codigo);
+                        document.getElementById("relatedProductsInside").innerHTML = htmlContentToAppend;
+                    };
+                };
+            });
+            //
             let productNameHTML = document.getElementById("productName");
             let productDescriptionHTML = document.getElementById("productDescription");
             let productPriceAndCurrencyHTML = document.getElementById("productPriceAndCurrency");
-
+            //
             productNameHTML.innerHTML = product.name;
             productDescriptionHTML.innerHTML = product.description;
             productPriceAndCurrencyHTML.innerHTML = product.cost + " " + product.currency;
-
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
-            if (!localStorage.getItem("contador") == 1) {
-                localStorage.setItem("contador", "1");
-                //alert("primera");
-                location.reload();
-            } else {
-                //alert("ok");
-            }
-            getRelatedProducts(product.relatedProducts);
-
         }
-    });
-
-    //AGREGO PRODUCTOS RELACIONADOS
-    getJSONData(PRODUCTS_URL).then(function(resultObj) {
-        let htmlContentToAppend = "";
-        if (resultObj.status === "ok") {
-            currentProductsArray = resultObj.data;
-            for (var i = 0; i < productosRelacionados.length; i++) {
-                htmlContentToAppend += `
-                <div class="col-sm-4 col-md-2">
-                    <div class="card-img-top">
-                        <img src="` + currentProductsArray[productosRelacionados[i]].imgSrc + `"class="img-thumbnail" name="zoom" style="cursor:pointer">
-                    </div>
-                    <h4>
-                        <a href="# " class="font-weight-bold text-dark text-uppercase small ">` + currentProductsArray[productosRelacionados[i]].name + `</a>
-                    </h4>
-                    <h5 class="text-warning">` + currentProductsArray[productosRelacionados[i]].cost + ` ` + currentProductsArray[productosRelacionados[i]].currency + `</h5>
-                </div>` //se usa un template para que todos los elementos sean "iguales" (y que sea mas facil de concatenar codigo);
-                document.getElementById("relatedProductsInside").innerHTML = htmlContentToAppend;
-            };
-        };
     });
 
     //AGREGO COMENTARIOS
@@ -86,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
             let htmlContentToAppend = "";
             if (resultObj.status === "ok") {
                 userImgArray = resultObj.data["usersProfileImg"]; //capturo la data de un array en concreto denro del json
-
                 let starsToAdd = "";
                 for (let i = 0; i < productsCommentsArray.length; i++) {
                     starsToAdd = ""; //reseteo la variable para que no se me acumulen las estrellas, hago esto porque mi append es acumulativo;
@@ -96,16 +86,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     starsToAdd = mostrarEstrellas(productsCommentsArray[i].score, starsToAdd);
                     //
                     htmlContentToAppend += `
-                            <div  style="padding-bottom: 30px;" id="commentElement">
-                                <div class="float-left">
-                                    <img src="` + userImgArray[i].imgSrc + `" style="width: 30px;">
-                                </div>
-                                <h4 style="padding-left: 40px;">
-                                    <a href="#">` + productsCommentsArray[i].user + `</a>
-                                </h4>` + starsToAdd + `
-                                <h5 class="equal">` + productsCommentsArray[i].description + `</h5> 
-                                <small>` + fechaOK + `</small>
-                            </div>`;
+                        <div  style="padding-bottom: 30px;" id="commentElement">
+                            <div class="float-left">
+                                <img src="` + userImgArray[i].imgSrc + `" style="width: 30px;">
+                            </div>
+                            <h4 style="padding-left: 40px;">
+                                <a href="#">` + productsCommentsArray[i].user + `</a>
+                            </h4>` + starsToAdd + `
+                            <h5 class="equal">` + productsCommentsArray[i].description + `</h5> 
+                            <small>` + fechaOK + `</small>
+                        </div>`;
                 }
             }
             if (!localStorage.getItem("NEW_COMMENT") == null || !localStorage.getItem("NEW_COMMENT") == undefined || !localStorage.getItem("NEW_COMMENT") == "") {
@@ -143,25 +133,25 @@ document.addEventListener("DOMContentLoaded", function(e) {
         let starsToAdd = "";
         var htmlContentToAppend = document.getElementById("productsCommentsMain").innerHTML;
         score = ($('input[name=option]:checked').val());
-
         //
         localStorage.setItem("USER_COMMENT", document.getElementById("commentArea").value);
         //
         starsToAdd = mostrarEstrellas(score, starsToAdd);
 
         htmlContentToAppend += `
-        <div  style="padding-bottom: 30px;" id="commentElement">
-            <div class="float-left">
-                <img src="` + localStorage.getItem("USER_PROFILE_IMG") + `" style="width: 30px;">
-            </div>
-            <h4 style="padding-left: 40px;">
-                <a href="#">` + localStorage.getItem("USERNAME") + `</a>
-            </h4>` + starsToAdd + `
-            <h5 class="equal">` + localStorage.getItem("USER_COMMENT") + `</h5> 
-            <small>` + today.toString().replaceAll("/", "-") + `</small>
-        </div>`;
+            <div  style="padding-bottom: 30px;" id="commentElement">
+                <div class="float-left">
+                    <img src="` + localStorage.getItem("USER_PROFILE_IMG") + `" style="width: 30px;">
+                </div>
+                <h4 style="padding-left: 40px;">
+                    <a href="#">` + localStorage.getItem("USERNAME") + `</a>
+                </h4>` + starsToAdd + `
+                <h5 class="equal">` + localStorage.getItem("USER_COMMENT") + `</h5> 
+                <small>` + today.toString().replaceAll("/", "-") + `</small>
+            </div>`;
         localStorage.setItem("NEW_COMMENT", htmlContentToAppend);
         location.reload();
+        getRelatedProducts(product.relatedProducts);
     });
 
 });
