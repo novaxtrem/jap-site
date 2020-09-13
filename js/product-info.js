@@ -3,6 +3,8 @@ var currentProductsArray = [];
 var productsCommentsArray = [];
 var productosRelacionados = [];
 //
+localStorage.setItem("contador", "0");
+
 
 //DIBUJO GALERIA
 function showImagesGallery(array) {
@@ -43,6 +45,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(product.images);
+            if (!localStorage.getItem("contador") == 1) {
+                localStorage.setItem("contador", "1");
+                //alert("primera");
+                location.reload();
+            } else {
+                //alert("ok");
+            }
             getRelatedProducts(product.relatedProducts);
 
         }
@@ -63,13 +72,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         <a href="# " class="font-weight-bold text-dark text-uppercase small ">` + currentProductsArray[productosRelacionados[i]].name + `</a>
                     </h4>
                     <h5 class="text-warning">` + currentProductsArray[productosRelacionados[i]].cost + ` ` + currentProductsArray[productosRelacionados[i]].currency + `</h5>
-                </div>`
-                    //se usa un template para que todos los elementos sean "iguales" (y que sea mas facil de concatenar codigo);
+                </div>` //se usa un template para que todos los elementos sean "iguales" (y que sea mas facil de concatenar codigo);
                 document.getElementById("relatedProductsInside").innerHTML = htmlContentToAppend;
             };
         };
-        localtion.reload();
     });
+
     //AGREGO COMENTARIOS
     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj) {
         productsCommentsArray = resultObj.data;
