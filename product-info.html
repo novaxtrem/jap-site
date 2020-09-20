@@ -16,7 +16,9 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 </head>
 
@@ -27,7 +29,6 @@
     <main role="main">
         <div class="container mt-5">
             <h3 id="productName"></h3>
-            <hr class="my-3">
             <dl>
                 <dt>Descripción</dt>
                 <dd>
@@ -39,9 +40,23 @@
                     <p id="productPriceAndCurrency"></p>
                 </dd>
 
-                <dt>Imágenes ilustrativas</dt>
+                <dt style="text-align: center;">Imágenes ilustrativas</dt>
                 <dd>
-                    <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+                    <div class="container" style="width: 80%;">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" id="images-inner">
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
                     </div>
                 </dd>
             </dl>
