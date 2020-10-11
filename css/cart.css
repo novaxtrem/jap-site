@@ -1,0 +1,29 @@
+.item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+  
+  .btn-pay {
+    background-color: #2ab1ff;
+    border: 0;
+    color: #fff;
+    font-weight: 600;
+
+  }
+  
+  .fa-ticket {
+    color: #0e1fa1;
+  }
+  
+
+
+    
+  #izquierda {
+
+  float: left;
+  }
+#container{
+    margin: 0 25%;
+}
