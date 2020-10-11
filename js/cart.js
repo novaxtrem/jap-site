@@ -1,8 +1,3 @@
-
-
-  
-
-
 /* Set rates */
 var taxRate = 0.05;
 var fadeTime = 100;
@@ -10,9 +5,9 @@ let articleList = [];
 var tax;
 var total;
 var subtotal;
+var moneda;
 
-//
-class Article {
+class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
         this.name = name;
         this.count = count;
@@ -26,16 +21,16 @@ class Article {
     }
 }
 
-function cargoArrayArticulos() {
+function cargoArrayArticulos() { //CARGO MI ARRAYLIST CON LA INFORMACION DEL JSON
     return $.ajax({
         url: PRELOADED_ARTICLE_JSON,
         type: "GET",
         dataType: 'json',
-        async: false,
+        async: false, //SINCRONICO, NO ESPERO EL CALLBACK, DALE QUE ES TARTDE
         success: function (data) {
             for (var i = 0; i < data.articles.length; i++) {
-                var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src);
-                articleList.push(newArticle);
+                var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
+                articleList.push(newArticle); //AGREGO EL OBJETO AL ARRAYLIST
             }
         }
     });
@@ -46,36 +41,36 @@ function dibujoArticulos() {
     var htmlContentToAppend = "";
     for (var i = 0; i < articleList.length; i++) {
         var precioArticuloLinea = articleList[i].unitCost * articleList[i].count;
-        if(articleList[i].currency=="USD"){
-            articleList[i].unitCost = articleList[i].unitCost*40;
-            articleList[i].currency ="UYU";
-            precioArticuloLinea = articleList[i].unitCost ;
+
+        if (articleList[i].currency == "USD") { //PASO A PESOS CUALQUIER ELEMENTO QUE ESTE EN DOLARES
+            articleList[i].unitCost = articleList[i].unitCost * 40;
+            articleList[i].currency = "UYU";
+            precioArticuloLinea = articleList[i].unitCost;
         }
+        moneda = articleList[i].currency;
         htmlContentToAppend += `
             <div class="border border-gainsboro p-3 clearfix item">
-                <div class="text-lg-left">
-                    <i class="fa fa-ticket fa-2x text-center" aria-hidden="true"></i>
-                </div>
+                <img src="`+ articleList[i].src + `" width="80px">
                 <div class="col-lg-5 col-5 text-lg-left">
-                    <h3 class="h6 mb-0">`+ articleList[i].name + `<br>
-                        <h5>costo unitario: `+ articleList[i].unitCost +" "+ articleList[i].currency+`</h5>
-                    </h3>
+                    <h4>`+ articleList[i].name + `<br>
+                        <h5>costo unitario: `+ articleList[i].unitCost + " " + articleList[i].currency + `</h5>
+                    </h4>
                 </div>
                 <div class="product-price d-none">`+ articleList[i].unitCost + `</div>
-                <div class="pass-quantity col-lg-3 col-md-4 col-sm-3">
+                <div class="pass-quantity col-lg-3">
                     <label for="pass-quantity" class="pass-quantity">Cantidad</label>
                     <input class="form-control" type="number" value="`+ articleList[i].count + `" min="1">
                 </div>
                 <div class="col-lg-2 col-md-1 col-sm-2 product-line-price pt-4">
-                    <span class="product-line-price">`+ precioArticuloLinea + `</span>
+                    <span class="product-line-price">`+ precioArticuloLinea + " " + moneda + `</span>
                 </div>
                 <div class="remove-item pt-4">
-                    <button class="remove-product btn-light">Delete</button>
+                    <button class="remove-product btn btn-danger">eliminar</button>
                 </div>
             </div>`
         document.getElementById("itemList").innerHTML = htmlContentToAppend;
     }
-  
+
 }
 
 
@@ -95,9 +90,10 @@ function recalculateCart() {
 
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function () {
-        $('#cart-subtotal').html(subtotal.toFixed(2));
-        $('#cart-tax').html(tax.toFixed(2));
-        $('.cart-total').html(total.toFixed(2));
+        $('#cart-subtotal').html(subtotal.toFixed(1));
+        $('#cart-tax').html(tax.toFixed(1));
+        $('.cart-total').html(total.toFixed(1));
+        $('.moneda').html(moneda);
         if (total == 0) {
             $('.checkout').fadeOut(fadeTime);
         } else {
@@ -120,7 +116,7 @@ function updateQuantity(quantityInput) {
     /* Update line price display and recalc cart totals */
     productRow.children('.product-line-price').each(function () {
         $(this).fadeOut(fadeTime, function () {
-            $(this).text(linePrice.toFixed(2));
+            $(this).text(linePrice.toFixed(1)+" "+moneda);
             recalculateCart();
             $(this).fadeIn(fadeTime);
         });
