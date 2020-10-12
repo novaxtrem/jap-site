@@ -142,4 +142,9 @@ $(document).ready(function() { //DOM CONTENT LOADED
     $('.radio input').change(function() {
         recalculateCart();
     });
+
+    $('#cardNumber').on('input', function(e) {
+        alert("sdsa");
+    });
+
 });
