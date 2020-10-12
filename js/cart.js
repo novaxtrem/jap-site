@@ -1,4 +1,5 @@
 var fadeTime = 100;
+var fadeTimeCards = 300;
 let articleList = [];
 var moneda;
 const cotizacion = 40;
@@ -127,6 +128,23 @@ function removeItem(removeButton) {
     });
 }
 
+function metodoRandomCreditCardSelected(numeroTarjeta) {
+    var visaCard1 = "496"; // ACA TENDRIA QUE USAR UN ARRAY CON NUMEROS, VA EN RELIDAD NI TENDRIA QUE HACER ESTO PERO TA TABA ABURRIDO
+    var visaCard2 = "485";
+    if (numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2)) {
+        $('#mastercard').fadeOut(fadeTimeCards).hide();
+        //
+        $('#visa').css('opacity', '0.9');
+        $('#visa').fadeIn(fadeTimeCards).show();
+
+    } else if (!(numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2))) {
+        $('#visa').fadeOut(fadeTimeCards).hide();
+        //
+        $('#mastercard').css('opacity', '0.9');
+        $('#mastercard').fadeIn(fadeTimeCards).show();
+
+    }
+};
 
 $(document).ready(function() { //DOM CONTENT LOADED
     cargoArrayArticulos();
@@ -144,7 +162,14 @@ $(document).ready(function() { //DOM CONTENT LOADED
     });
 
     $('#cardNumber').on('input', function(e) {
-        alert("sdsa");
+        metodoRandomCreditCardSelected($('#cardNumber').val());
+        if ($('#cardNumber').val() == "") {
+            $('#mastercard').css('opacity', '0.4');
+            $('#visa').css('opacity', '0.4');
+            //
+            $('#mastercard').fadeIn(fadeTimeCards).show();
+            $('#visa').fadeIn(fadeTimeCards).show();
+        }
     });
 
 });
