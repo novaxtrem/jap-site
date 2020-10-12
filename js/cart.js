@@ -3,7 +3,7 @@ var fadeTimeCards = 300;
 let articleList = [];
 var moneda;
 const cotizacion = 40;
-
+//SHOW ME YOUR KUNG FU
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
         this.name = name;
@@ -33,7 +33,6 @@ function cargoArrayArticulos() { //CARGO MI ARRAYLIST CON LA INFORMACION DEL JSO
 };
 
 function dibujoArticulos() {
-
     var htmlContentToAppend = "";
     for (var i = 0; i < articleList.length; i++) {
         var precioArticuloLinea = articleList[i].unitCost * articleList[i].count;
@@ -74,15 +73,14 @@ function recalculateCart() {
     var costoEnvio = 0;
     var tipoEnvio = 0;
     var total = 0;
-
+    //
     $('.item').each(function() { //POR CADA UNA DE LAS "FILAS" (ELEMENTOS ITEMS) QUE ENCUENTRO DENTRO DEL HTML
         subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
     });
-
+    //
     tipoEnvio = $("input[name='optradio']:checked").val(); //CALCULOS
     costoEnvio = tipoEnvio * subtotal;
     total = subtotal + costoEnvio;
-
 
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function() {
@@ -97,7 +95,6 @@ function recalculateCart() {
         }
         $('.totals-value').fadeIn(fadeTime);
     });
-
 }
 
 /* Update quantity */
@@ -134,15 +131,13 @@ function metodoRandomCreditCardSelected(numeroTarjeta) {
     if (numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2)) {
         $('#mastercard').fadeOut(fadeTimeCards).hide();
         //
-        $('#visa').css('opacity', '0.9');
+        $('#visa').css('opacity', '0.9'); //SOBRE ESCRIBO EL CSS PARA CAMBIAR LA OPACIDAD
         $('#visa').fadeIn(fadeTimeCards).show();
-
     } else if (!(numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2))) {
         $('#visa').fadeOut(fadeTimeCards).hide();
         //
         $('#mastercard').css('opacity', '0.9');
         $('#mastercard').fadeIn(fadeTimeCards).show();
-
     }
 };
 
@@ -160,7 +155,7 @@ $(document).ready(function() { //DOM CONTENT LOADED
     $('.radio input').change(function() {
         recalculateCart();
     });
-
+    //
     $('#cardNumber').on('input', function(e) {
         metodoRandomCreditCardSelected($('#cardNumber').val());
         if ($('#cardNumber').val() == "") {
@@ -171,5 +166,4 @@ $(document).ready(function() { //DOM CONTENT LOADED
             $('#visa').fadeIn(fadeTimeCards).show();
         }
     });
-
 });
