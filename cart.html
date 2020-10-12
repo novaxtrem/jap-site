@@ -27,77 +27,105 @@
 
 <body>
     <div id="mainNav">
-
     </div>
-    <h2>carrito</h2>
-
-    <div id="container">
+    <div id="mainContainer">
         <div id="mainItemsContainer">
             <div id="itemList"></div>
         </div>
-
         <div id="shippingAndPayment">
-            <form>
-                <div id="costDiv">
-                    <div class="col-xl-3 col-lg-4 totals">
-                        <div id="envioDiv" class="border px-3">
-                            <h5 class="mb-3 text-uppercase mb-0 py-3"><strong>Dirección de envio</h5></strong>
-                                <input type="text" class="form-control" placeholder="Calle">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="numero">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <input type="text" class="form-control" placeholder="Esquina">
-                                    </div>
-
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio" checked value="0.15">Premium 2 a 5 dias
-                                    (15%)</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio" value="0.07">Expres 5 a 8 dias (7%)</label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio" value="0.05">Estandar 12 a 15 dias
-                                    (5%)</label>
-                                </div>
-
-                                <div class="border px-3">
-                                    <div class="border-bottom">
-                                        <p class="text-uppercase mb-0 py-3"><strong>detalle de factura</strong></p>
-                                    </div>
-                                    <div class="totals-item d-flex align-items-center justify-content-between mt-3">
-                                        <p class="text-uppercase">Subtotal</p>
-                                        <p class="totals-value" id="cart-subtotal"></p>
-                                    </div>
-                                    <div class="totals-item d-flex align-items-center justify-content-between">
-                                        <p class="text-uppercase">Costo Envio</p>
-                                        <p class="totals-value" id="costoEnvio"></p>
-                                    </div>
-                                    <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
-                                        <p class="text-uppercase"><strong>Total</strong></p>
-                                        <p class="totals-value font-weight-bold cart-total" id="importeFinal"></p>
-                                    </div>
-                                </div>
-                                <a href="#" class="btn btn-pay d-flex justify-content-between btn-lg rounded-0">
-                                    <h4 class="totals-value cart-total">Pagar ahora</h4>
-                                </a>
+            <div id="costDiv">
+                <div class="col-xl-3 col-lg-4 totals">
+                    <div id="envioDiv" class="border px-3">
+                        <h5 class="mb-3 text-uppercase mb-0 py-3"><strong>Dirección de envio</strong></h5>
+                        <input type="text" class="form-control" placeholder="Calle">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="numero">
+                            </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <input type="text" class="form-control" placeholder="Esquina">
+                            </div>
+                        </div>
+                        <div class="payment">
+                            <div class="form-group owner">
+                                <h5 class="mb-3 text-uppercase mb-0 py-3"><strong>tarjeta de credito</strong></h5>
+                                <input type="text" class="form-control" id="titular" placeholder="Titular de la tarjeta" required="true">
+                            </div>
+                            <div class="form-group" id="card-number-field">
+                                <input type="text" class="form-control" id="cardNumber" placeholder="numero de la tarjeta">
+                            </div>
+                            <div class="form-group CVV">
+                                <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                            </div>
+                            <div class="form-group" id="expiration-date">
+                                <label>Vencimiento</label>
+                                <select>
+                                        <option value="01">Enero</option>
+                                        <option value="02">Febrero </option>
+                                        <option value="03">Marzo</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Mayo</option>
+                                        <option value="06">Junio</option>
+                                        <option value="07">Julio</option>
+                                        <option value="08">Agosto</option>
+                                        <option value="09">Septiembre</option>
+                                        <option value="10">Octubre</option>
+                                        <option value="11">Noviembre</option>
+                                        <option value="12">Diciembre</option>
+                                    </select>
+                                <select>
+                                        <option value="20"> 2020</option>
+                                        <option value="21"> 2021</option>
+                                        <option value="16"> 2022</option>
+                                        <option value="17"> 2023</option>
+                                        <option value="18"> 2024</option>
+                                        <option value="19"> 2025</option>
+                                    </select>
+                            </div>
+                            <div class="form-group" id="credit-cards">
+                                <img src="img/visa.png" id="visa">
+                                <img src="img/mastercard.jpg" id="mastercard">
+                            </div>
+                        </div>
+                        <div id="tipo-envio-main-container">
+                            <h5 class="mb-3 text-uppercase mb-0"><strong>Tipo de envio</strong></h5>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" checked value="0.15">Premium 2 a 5 dias (15%)</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" value="0.07">Expres 5 a 8 dias (7%)</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" value="0.05">Estandar 12 a 15 dias (5%)</label>
+                            </div>
+                        </div>
+                        <div class="border px-3">
+                            <div class="border-bottom">
+                                <p class="text-uppercase mb-0 py-3"><strong>detalle de factura</strong></p>
+                            </div>
+                            <div class="totals-item d-flex align-items-center justify-content-between mt-3">
+                                <p class="text-uppercase">Subtotal</p>
+                                <p class="totals-value" id="cart-subtotal"></p>
+                            </div>
+                            <div class="totals-item d-flex align-items-center justify-content-between">
+                                <p class="text-uppercase">Costo Envio</p>
+                                <p class="totals-value" id="costoEnvio"></p>
+                            </div>
+                            <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
+                                <p class="text-uppercase"><strong>Total</strong></p>
+                                <p class="totals-value font-weight-bold cart-total" id="importeFinal"></p>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-pay d-flex justify-content-between btn-lg rounded-0">
+                            <h4 class="totals-value cart-total">Pagar ahora</h4>
+                        </a>
                     </div>
-            </form>
+                </div>
             </div>
         </div>
-
-
-
     </div>
-
-
 </body>
 <link href="css/product-info.css" rel="stylesheet">
 <link href="css/stars.css" rel="stylesheet">

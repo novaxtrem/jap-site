@@ -20,6 +20,7 @@
 
 #mainItemsContainer {
     float: left;
+    overflow: auto;
 }
 
 #envioDiv {
@@ -33,6 +34,13 @@
     margin-bottom: 10px;
 }
 
-#container {
-    margin: 0 10%;
+#mainContainer {
+    margin: 0 5%;
+    margin-top: 20px;
+}
+
+#credit-cards img {
+    width: 55px;
+    border-radius: 8px;
+    margin-left: 5px;
 }
