@@ -11,7 +11,6 @@ class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
         this.currency = currency;
         this.src = src;
     }
-
     dameDatos() {
         console.log(this.name + " " + this.count + " " + this.unitCost + " " + this.currency + " " + this.src)
     }
@@ -66,10 +65,7 @@ function dibujoArticulos() {
             </div>`
         document.getElementById("itemList").innerHTML = htmlContentToAppend;
     }
-
 }
-
-
 
 /* Recalculate cart */
 function recalculateCart() {
@@ -77,12 +73,12 @@ function recalculateCart() {
     var costoEnvio = 0;
     var tipoEnvio = 0;
     var total = 0;
-    /* Sum up row totals */
-    $('.item').each(function() {
+
+    $('.item').each(function() { //POR CADA UNA DE LAS "FILAS" (ELEMENTOS ITEMS) QUE ENCUENTRO DENTRO DEL HTML
         subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
     });
 
-    tipoEnvio = $("input[name='optradio']:checked").val();
+    tipoEnvio = $("input[name='optradio']:checked").val(); //CALCULOS
     costoEnvio = tipoEnvio * subtotal;
     total = subtotal + costoEnvio;
 
@@ -91,7 +87,7 @@ function recalculateCart() {
     $('.totals-value').fadeOut(fadeTime, function() {
         $('#cart-subtotal').html(parseFloat(subtotal).toFixed(2));
         $("#costoEnvio").html(parseFloat(costoEnvio).toFixed(2));
-        $('#importeFinal').html(total);
+        $('#importeFinal').html(total.toFixed(2));
         $('.moneda').html(moneda);
         if (total == 0) {
             $('.checkout').fadeOut(fadeTime);
@@ -102,8 +98,6 @@ function recalculateCart() {
     });
 
 }
-
-
 
 /* Update quantity */
 function updateQuantity(quantityInput) {
@@ -134,8 +128,7 @@ function removeItem(removeButton) {
 }
 
 
-
-$(document).ready(function() {
+$(document).ready(function() { //DOM CONTENT LOADED
     cargoArrayArticulos();
     dibujoArticulos();
     recalculateCart();
