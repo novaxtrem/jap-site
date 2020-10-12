@@ -1,11 +1,7 @@
-/* Set rates */
-var taxRate = 0.05;
 var fadeTime = 100;
 let articleList = [];
-var tax;
-var total;
-var subtotal;
 var moneda;
+const cotizacion = 40;
 
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
@@ -27,7 +23,7 @@ function cargoArrayArticulos() { //CARGO MI ARRAYLIST CON LA INFORMACION DEL JSO
         type: "GET",
         dataType: 'json',
         async: false, //SINCRONICO, NO ESPERO EL CALLBACK, DALE QUE ES TARTDE
-        success: function (data) {
+        success: function(data) {
             for (var i = 0; i < data.articles.length; i++) {
                 var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
                 articleList.push(newArticle); //AGREGO EL OBJETO AL ARRAYLIST
@@ -43,29 +39,29 @@ function dibujoArticulos() {
         var precioArticuloLinea = articleList[i].unitCost * articleList[i].count;
 
         if (articleList[i].currency == "USD") { //PASO A PESOS CUALQUIER ELEMENTO QUE ESTE EN DOLARES
-            articleList[i].unitCost = articleList[i].unitCost * 40;
+            articleList[i].unitCost = articleList[i].unitCost * cotizacion;
             articleList[i].currency = "UYU";
             precioArticuloLinea = articleList[i].unitCost;
         }
         moneda = articleList[i].currency;
         htmlContentToAppend += `
             <div class="border border-gainsboro p-3 clearfix item">
-                <img src="`+ articleList[i].src + `" width="80px">
+                <img src="` + articleList[i].src + `" width="80px">
                 <div class="col-lg-5 col-5 text-lg-left">
-                    <h4>`+ articleList[i].name + `<br>
-                        <h5>costo unitario: `+ articleList[i].unitCost + " " + articleList[i].currency + `</h5>
+                    <h4>` + articleList[i].name + `<br>
+                        <h5>costo unitario: ` + articleList[i].unitCost + " " + articleList[i].currency + `</h5>
                     </h4>
                 </div>
-                <div class="product-price d-none">`+ articleList[i].unitCost + `</div>
+                <div class="product-price d-none">` + articleList[i].unitCost + `</div>
                 <div class="pass-quantity col-lg-3">
                     <label for="pass-quantity" class="pass-quantity">Cantidad</label>
-                    <input class="form-control" type="number" value="`+ articleList[i].count + `" min="1">
+                    <input class="form-control" type="number" value="` + articleList[i].count + `" min="1">
                 </div>
                 <div class="col-lg-2 col-md-1 col-sm-2 product-line-price pt-4">
-                    <span class="product-line-price">`+ precioArticuloLinea + " " + moneda + `</span>
+                    <span class="product-line-price text-right">` + precioArticuloLinea + " " + moneda + `</span>
                 </div>
                 <div class="remove-item pt-4">
-                    <button class="remove-product btn btn-danger">eliminar</button>
+                    <button class="remove-product btn btn-danger ">eliminar</button>
                 </div>
             </div>`
         document.getElementById("itemList").innerHTML = htmlContentToAppend;
@@ -77,22 +73,25 @@ function dibujoArticulos() {
 
 /* Recalculate cart */
 function recalculateCart() {
-    subtotal = 0;
-
+    var subtotal = 0;
+    var costoEnvio = 0;
+    var tipoEnvio = 0;
+    var total = 0;
     /* Sum up row totals */
-    $('.item').each(function () {
-        subtotal += parseFloat($(this).children('.product-line-price').text());
+    $('.item').each(function() {
+        subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
     });
 
-    /* Calculate totals */
-    tax = subtotal * taxRate;
-    total = subtotal + tax;
+    tipoEnvio = $("input[name='optradio']:checked").val();
+    costoEnvio = tipoEnvio * subtotal;
+    total = subtotal + costoEnvio;
+
 
     /* Update totals display */
-    $('.totals-value').fadeOut(fadeTime, function () {
-        $('#cart-subtotal').html(subtotal.toFixed(1));
-        $('#cart-tax').html(tax.toFixed(1));
-        $('.cart-total').html(total.toFixed(1));
+    $('.totals-value').fadeOut(fadeTime, function() {
+        $('#cart-subtotal').html(parseFloat(subtotal).toFixed(2));
+        $("#costoEnvio").html(parseFloat(costoEnvio).toFixed(2));
+        $('#importeFinal').html(total);
         $('.moneda').html(moneda);
         if (total == 0) {
             $('.checkout').fadeOut(fadeTime);
@@ -101,6 +100,7 @@ function recalculateCart() {
         }
         $('.totals-value').fadeIn(fadeTime);
     });
+
 }
 
 
@@ -108,15 +108,15 @@ function recalculateCart() {
 /* Update quantity */
 function updateQuantity(quantityInput) {
     /* Calculate line price */
-    var productRow = $(quantityInput).parent().parent();
+    var productRow = $(quantityInput).parent().parent(); //CONSIGO LA ROW MEDIANTE EL "PADRE-DEL-PADRE"
     var price = parseFloat(productRow.children('.product-price').text());
     var quantity = $(quantityInput).val();
     var linePrice = price * quantity;
 
     /* Update line price display and recalc cart totals */
-    productRow.children('.product-line-price').each(function () {
-        $(this).fadeOut(fadeTime, function () {
-            $(this).text(linePrice.toFixed(1)+" "+moneda);
+    productRow.children('.product-line-price').each(function() {
+        $(this).fadeOut(fadeTime, function() { //EFECTOS FADE PARA CHETEARLO
+            $(this).text(linePrice.toFixed(1) + " " + moneda);
             recalculateCart();
             $(this).fadeIn(fadeTime);
         });
@@ -126,8 +126,8 @@ function updateQuantity(quantityInput) {
 /* Remove item from cart */
 function removeItem(removeButton) {
     /* Remove row from DOM and recalc cart total */
-    var productRow = $(removeButton).parent().parent();
-    productRow.slideUp(fadeTime, function () {
+    var productRow = $(removeButton).parent().parent(); //CONSIGO LA ROW MEDIANTE EL "PADRE-DEL-PADRE" AGAIN
+    productRow.slideUp(fadeTime, function() {
         productRow.remove();
         recalculateCart();
     });
@@ -135,15 +135,18 @@ function removeItem(removeButton) {
 
 
 
-$(document).ready(function () {
+$(document).ready(function() {
     cargoArrayArticulos();
     dibujoArticulos();
     recalculateCart();
     //
-    $('.pass-quantity input').change(function () {
-        updateQuantity(this);
+    $('.pass-quantity input').change(function() {
+        updateQuantity(this); //LE PASO EL ELEMENTO QUE DISPARO EL EVENTO A LA FUNCION
     });
-    $('.remove-item button').click(function () {
+    $('.remove-item button').click(function() {
         removeItem(this);
+    });
+    $('.radio input').change(function() {
+        recalculateCart();
     });
 });

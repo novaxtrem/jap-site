@@ -3,27 +3,36 @@
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 5px;
-  }
-  
-  .btn-pay {
+}
+
+.btn-pay {
     background-color: #2ab1ff;
     border: 0;
     color: #fff;
     font-weight: 600;
+    text-align: center;
+    flex-flow: column;
+}
 
-  }
-  
-  .fa-ticket {
+.fa-ticket {
     color: #0e1fa1;
-  }
-  
+}
 
+#mainItemsContainer {
+    float: left;
+}
 
-    
-  #izquierda {
+#envioDiv {
+    border-width: 1px;
+    padding: 10px;
+    border-style: solid;
+    margin-bottom: 10px;
+}
 
-  float: left;
-  }
-#container{
+#envioDiv input {
+    margin-bottom: 10px;
+}
+
+#container {
     margin: 0 10%;
 }

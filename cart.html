@@ -16,11 +16,11 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/cart.css" rel="stylesheet">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-<script src="js/cart.js"></script>
+
+    <script src="js/cart.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
@@ -30,34 +30,73 @@
 
     </div>
     <h2>carrito</h2>
-   
-    <div id="container">  
-        <div id="izquierda">
-            <div id="itemList"></div> 
+
+    <div id="container">
+        <div id="mainItemsContainer">
+            <div id="itemList"></div>
         </div>
-        <div id="costDiv">
-            <div class="col-xl-3 col-lg-4 totals">
-                <div class="border px-3">
-                    <div class="border-bottom">
-                        <p class="text-uppercase mb-0 py-3"><strong>detalle de factura</strong></p>
+
+        <div id="shippingAndPayment">
+            <form>
+                <div id="costDiv">
+                    <div class="col-xl-3 col-lg-4 totals">
+                        <div id="envioDiv" class="border px-3">
+                            <h5 class="mb-3 text-uppercase mb-0 py-3"><strong>Dirección de envio</h5></strong>
+                                <input type="text" class="form-control" placeholder="Calle">
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="numero">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <input type="text" class="form-control" placeholder="Esquina">
+                                    </div>
+
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio" checked value="0.15">Premium 2 a 5 dias
+                                    (15%)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio" value="0.07">Expres 5 a 8 dias (7%)</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="optradio" value="0.05">Estandar 12 a 15 dias
+                                    (5%)</label>
+                                </div>
+
+                                <div class="border px-3">
+                                    <div class="border-bottom">
+                                        <p class="text-uppercase mb-0 py-3"><strong>detalle de factura</strong></p>
+                                    </div>
+                                    <div class="totals-item d-flex align-items-center justify-content-between mt-3">
+                                        <p class="text-uppercase">Subtotal</p>
+                                        <p class="totals-value" id="cart-subtotal"></p>
+                                    </div>
+                                    <div class="totals-item d-flex align-items-center justify-content-between">
+                                        <p class="text-uppercase">Costo Envio</p>
+                                        <p class="totals-value" id="costoEnvio"></p>
+                                    </div>
+                                    <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
+                                        <p class="text-uppercase"><strong>Total</strong></p>
+                                        <p class="totals-value font-weight-bold cart-total" id="importeFinal"></p>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-pay d-flex justify-content-between btn-lg rounded-0">
+                                    <h4 class="totals-value cart-total">Pagar ahora</h4>
+                                </a>
+                        </div>
+
                     </div>
-                    <div class="totals-item d-flex align-items-center justify-content-between mt-3">
-                        <p class="text-uppercase">Subtotal</p>
-                        <p class="totals-value" id="cart-subtotal"></p>
-                    </div>
-                    <div class="totals-item d-flex align-items-center justify-content-between">
-                        <p class="text-uppercase">impuestos</p>
-                        <p class="totals-value" id="cart-tax"></p>
-                    </div>
-                    <div class="totals-item totals-item-total d-flex align-items-center justify-content-between mt-3 pt-3 border-top border-gainsboro">
-                        <p class="text-uppercase"><strong>Total</strong></p>
-                        <p class="totals-value font-weight-bold cart-total"></p>
-                    </div>
-                </div>
-                <a href="#" class="btn btn-pay d-flex justify-content-between btn-lg rounded-0" style="font-size: 14px;">Pagar ahora <span class="totals-value cart-total"></span><span class="moneda"></span></a>
+            </form>
             </div>
-        </div> 
+        </div>
+
+
+
     </div>
+
 
 </body>
 <link href="css/product-info.css" rel="stylesheet">
