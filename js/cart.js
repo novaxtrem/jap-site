@@ -3,7 +3,6 @@ var fadeTimeCards = 300;
 let articleList = [];
 var moneda;
 const cotizacion = 40;
-var medioPago = false;
 
 //SHOW ME YOUR KUNG FU
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
