@@ -35,15 +35,15 @@
                 <div class="border px-3">
                     <!--DIV DIRECCION--->
                     <h5 class="mb-3 text-uppercase mb-0 py-3"><strong>Dirección de envio</strong></h5>
-                    <input type="text" class="form-control validadorFinal" id="calle" placeholder="Calle" required>
+                    <input type="text" class="form-control" id="calle" placeholder="Calle" required>
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control validadorFinal" id="numero" placeholder="numero" required>
+                            <input type="text" class="form-control" id="numero" placeholder="numero" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <input type="text" class="form-control validadorFinal" id="esquina" placeholder="Esquina" required>
+                            <input type="text" class="form-control" id="esquina" placeholder="Esquina" required>
                         </div>
                     </div>
                     <!--DIV ENVIO--->
@@ -70,8 +70,8 @@
                         </div>
                     </div>
                     <!--MODAL PAGO CREDITO--->
-                    <div class="modal fade" id="modalTarjetaCredito" tabindex="-1" role="dialog" aria-labelledby="modalTarjetaCreditoCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal fade" id="modalTarjetaCredito" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <form>
                                     <div class="modal-header">
@@ -79,13 +79,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="tarjeta form-group owner">
-                                            <input type="text" class="form-control validadorFinal" id="titular" placeholder="Titular de la tarjeta" required>
+                                            <input type="text" class="form-control" id="titular" placeholder="Titular de la tarjeta" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control validadorFinal" id="cardNumber" placeholder="numero de la tarjeta" required>
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="numero de la tarjeta" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control validadorFinal" id="cvv" placeholder="CVV" required>
+                                            <input type="text" class="form-control" id="cvv" placeholder="CVV" required>
                                         </div>
                                         <div class="form-group" id="expiration-date">
                                             <label>Vencimiento</label>
@@ -119,15 +119,14 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
-                                        <button class="btn btn-sm btn btn-success" id="btnConfirmarPagoCredito">Confirmar</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <!--MODAL PAGO DEBITO--->
-                    <div class="modal fade" id="modalTarjetaDebito" tabindex="-1" role="dialog" aria-labelledby="modalTarjetaDebitoCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal fade" id="modalTarjetaDebito" tabindex="-1" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <form>
                                     <div class="modal-header">
@@ -135,13 +134,13 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="tarjeta form-group owner">
-                                            <input type="text " class="form-control validadorFinal" id="numeroDeCuenta" placeholder="Numero de Cuenta" required>
+                                            <input type="text " class="form-control" id="numeroDeCuenta" placeholder="Numero de Cuenta" required>
                                         </div>
                                         <div class="form-group" id="cedulaIdentidadField">
-                                            <input type="text" class="form-control validadorFinal" id="cedulaIdentidad" placeholder="Cedula Identidad" required>
+                                            <input type="text" class="form-control" id="cedulaIdentidad" placeholder="Cedula Identidad" required>
                                         </div>
                                         <div class="form-group CVV">
-                                            <input type="password" class="form-control validadorFinal" id="pin" placeholder="PIN" required>
+                                            <input type="password" class="form-control" id="pin" placeholder="PIN" required>
                                         </div>
                                         <div id="debit-cards">
                                             <img src="img/santander.jpg" id="santander">
@@ -149,7 +148,6 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cerrar</button>
-                                        <button class="btn btn-sm btn btn-success" id="btnConfirmarPagoDebito">Confirmar</button>
                                     </div>
                                 </form>
                             </div>
@@ -173,7 +171,7 @@
                             <p class="totals-value font-weight-bold cart-total" id="importeFinal"></p>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-pay d-flex justify-content-between btn-lg rounded-0" id="btnFinalizarCompra">
+                    <a class="btn btn-pay d-flex justify-content-between btn-lg rounded-0" id="btnFinalizarCompra">
                         <h4 class="cart-total">Pagar ahora</h4>
                     </a>
                 </div>

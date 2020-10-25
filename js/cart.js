@@ -128,34 +128,22 @@ function removeItem(removeButton) {
 }
 
 function metodoDepago(optionSelected) {
-    medioPago = false;
     if ($(optionSelected).val() == "credito") {
         $('#numeroDeCuenta').val("");
         $('#cedulaIdentidad').val("");
         $('#pin').val("");
-        $('#btnConfirmarPagoCredito').click(function() {
-            $("#modalTarjetaCredito").modal("hide");
-            $(".modal-backdrop").fadeOut();
-            medioPago = true;
-        });
     } else {
         $('#titular').val("");
         $('#cardNumber').val("");
         $('#cvv').val("");
-        $('#btnConfirmarPagoDebito').click(function() {
-            $("#modalTarjetaDebito").modal("hide");
-            $(".modal-backdrop").fadeOut();
-            medioPago = true;
-        });
     }
 }
 
 function controlFinal() {
     if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
-        if (!$('#numeroDeCuenta').val() == "" && !$('#cedulaIdentidad').val() == "" && !$('#pin').val() == "" || !$('#titular').val("") == "" && !$('#cardNumber').val("") == "" && !$('#cvv').val("") == "" && medioPago == true) {
+        if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
             alert("pago realizado con exito");
         } else {
-            medioPago = false;
             alert("debe confirmar el medio de pago");
         }
     } else {
@@ -178,11 +166,6 @@ $(document).ready(function() { //DOM CONTENT LOADED
     });
     $('.medioPago input').change(function() {
         metodoDepago(this);
-    });
-    $(".validadorFinal").change(function() {
-        if ($(this).val() == "") {
-            medioPago = false;
-        }
     });
     $('#btnFinalizarCompra').click(function() {
         controlFinal();
