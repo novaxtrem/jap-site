@@ -167,8 +167,8 @@ $(document).ready(function() { //DOM CONTENT LOADED
     //
     $('.pass-quantity input').change(function() {
         updateQuantity(this); //LE PASO EL ELEMENTO QUE DISPARO EL EVENTO A LA FUNCION
-        if ($(this).val() == "") {
-            $(this).val("0"); //SI INPUNT == "" (VACIO) THEN INPUNT =0
+        if (($(this).val() == "") || ($(this).val() == "0")) {
+            removeItem(this);
         }
     });
     $('.remove-item button').click(function() {
@@ -183,4 +183,5 @@ $(document).ready(function() { //DOM CONTENT LOADED
     $('#btnFinalizarCompra').click(function() {
         controlFinal();
     });
+
 });
