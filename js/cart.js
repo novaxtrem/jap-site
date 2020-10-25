@@ -3,6 +3,8 @@ var fadeTimeCards = 300;
 let articleList = [];
 var moneda;
 const cotizacion = 40;
+var medioPago = false;
+
 //SHOW ME YOUR KUNG FU
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
@@ -125,22 +127,41 @@ function removeItem(removeButton) {
     });
 }
 
-function metodoRandomCreditCardSelected(numeroTarjeta) {
-    var visaCard1 = "496"; // ACA TENDRIA QUE USAR UN ARRAY CON NUMEROS, VA EN RELIDAD NI TENDRIA QUE HACER ESTO PERO TA TABA ABURRIDO
-    var visaCard2 = "485";
-    if (numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2)) {
-        $('#mastercard').fadeOut(fadeTimeCards).hide();
-        //
-        $('#visa').css('opacity', '0.9'); //SOBRE ESCRIBO EL CSS PARA CAMBIAR LA OPACIDAD
-        $('#visa').fadeIn(fadeTimeCards).show();
-    } else if (!(numeroTarjeta.startsWith(visaCard1) || numeroTarjeta.startsWith(visaCard2))) {
-        $('#visa').fadeOut(fadeTimeCards).hide();
-        //
-        $('#mastercard').css('opacity', '0.9');
-        $('#mastercard').fadeIn(fadeTimeCards).show();
+function metodoDepago(optionSelected) {
+    medioPago = false;
+    if ($(optionSelected).val() == "credito") {
+        $('#numeroDeCuenta').val("");
+        $('#cedulaIdentidad').val("");
+        $('#pin').val("");
+        $('#btnConfirmarPagoCredito').click(function() {
+            $("#modalTarjetaCredito").modal("hide");
+            $(".modal-backdrop").fadeOut();
+            medioPago = true;
+        });
+    } else {
+        $('#titular').val("");
+        $('#cardNumber').val("");
+        $('#cvv').val("");
+        $('#btnConfirmarPagoDebito').click(function() {
+            $("#modalTarjetaDebito").modal("hide");
+            $(".modal-backdrop").fadeOut();
+            medioPago = true;
+        });
     }
-};
+}
 
+function controlFinal() {
+    if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
+        if (!$('#numeroDeCuenta').val() == "" && !$('#cedulaIdentidad').val() == "" && !$('#pin').val() == "" || !$('#titular').val("") == "" && !$('#cardNumber').val("") == "" && !$('#cvv').val("") == "" && medioPago == true) {
+            alert("pago realizado con exito");
+        } else {
+            medioPago = false;
+            alert("debe confirmar el medio de pago");
+        }
+    } else {
+        alert("debe completar la direccion");
+    }
+}
 $(document).ready(function() { //DOM CONTENT LOADED
     cargoArrayArticulos();
     dibujoArticulos();
@@ -152,18 +173,18 @@ $(document).ready(function() { //DOM CONTENT LOADED
     $('.remove-item button').click(function() {
         removeItem(this);
     });
-    $('.radio input').change(function() {
+    $('.envio input').change(function() {
         recalculateCart();
     });
-    //
-    $('#cardNumber').on('input', function(e) {
-        metodoRandomCreditCardSelected($('#cardNumber').val());
-        if ($('#cardNumber').val() == "") {
-            $('#mastercard').css('opacity', '0.4');
-            $('#visa').css('opacity', '0.4');
-            //
-            $('#mastercard').fadeIn(fadeTimeCards).show();
-            $('#visa').fadeIn(fadeTimeCards).show();
+    $('.medioPago input').change(function() {
+        metodoDepago(this);
+    });
+    $(".validadorFinal").change(function() {
+        if ($(this).val() == "") {
+            medioPago = false;
         }
+    });
+    $('#btnFinalizarCompra').click(function() {
+        controlFinal();
     });
 });
