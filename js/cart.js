@@ -127,7 +127,7 @@ function removeItem(removeButton) {
     });
 }
 
-function metodoDepago(optionSelected) {
+function metodoDepago(optionSelected) { //RESETEO LAS VARIABLES DE LSO INPUTS CUANDO CAMBIAS EL MODO DE PAGO
     if ($(optionSelected).val() == "credito") {
         $('#numeroDeCuenta').val("");
         $('#cedulaIdentidad').val("");
@@ -139,10 +139,10 @@ function metodoDepago(optionSelected) {
     }
 }
 
-function controlFinal() {
+function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODOS LOS INPUT DE LA PAGINA Y/O FILTRAR POR CLASE, PERO TA; ERAN POCOS PINTO ID
     if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
         if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
-            alert("pago realizado con exito");
+            alert(BUY_SUCCESS_MSG.msg);
         } else {
             alert("debe completar datos de medio de pago");
         }
@@ -151,6 +151,14 @@ function controlFinal() {
     }
 }
 $(document).ready(function() { //DOM CONTENT LOADED
+    //
+    getJSONData(CART_BUY_URL).then(function(resultObj) { //CARGO EL MENSAJE "PERSONALIZADO" DEL JSON
+        if (resultObj.status === "ok") {
+            BUY_SUCCESS_MSG = resultObj.data;
+        }
+        return BUY_SUCCESS_MSG; //RETORNO LA RESPUESTA
+    });
+    //
     cargoArrayArticulos();
     dibujoArticulos();
     recalculateCart();
@@ -158,7 +166,7 @@ $(document).ready(function() { //DOM CONTENT LOADED
     $('.pass-quantity input').change(function() {
         updateQuantity(this); //LE PASO EL ELEMENTO QUE DISPARO EL EVENTO A LA FUNCION
         if ($(this).val() == "") {
-            $(this).val("0");
+            $(this).val("0"); //SI INPUNT == "" (VACIO) THEN INPUNT =0
         }
     });
     $('.remove-item button').click(function() {

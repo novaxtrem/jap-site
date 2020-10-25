@@ -10,41 +10,43 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 const AVATAR_IMG_AND_SOME_MORE_DATA = "https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/4";
 const PRELOADED_ARTICLE_JSON = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 //
+var BUY_SUCCESS_MSG = "";
 
-var showSpinner = function() {
-    document.getElementById("spinner-wrapper").style.display = "block";
-}
+document.addEventListener("DOMContentLoaded", function(e) {
 
-var hideSpinner = function() {
-    document.getElementById("spinner-wrapper").style.display = "none";
-}
+    getJSONData = function(url) {
+        var result = {};
+        showSpinner();
+        return fetch(url)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw Error(response.statusText);
+                }
+            })
+            .then(function(response) {
+                result.status = 'ok';
+                result.data = response;
+                hideSpinner();
+                return result;
+            })
+            .catch(function(error) {
+                result.status = 'error';
+                result.data = error;
+                hideSpinner();
+                return result;
+            });
+    }
 
-var getJSONData = function(url) {
-    var result = {};
-    showSpinner();
-    return fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw Error(response.statusText);
-            }
-        })
-        .then(function(response) {
-            result.status = 'ok';
-            result.data = response;
-            hideSpinner();
-            return result;
-        })
-        .catch(function(error) {
-            result.status = 'error';
-            result.data = error;
-            hideSpinner();
-            return result;
-        });
-}
-
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e) {});
+    var showSpinner = function() {
+        if ($("#spinner-wrapper").length > 0) { //CONTROL DE NULL, POR LAS DUDAS
+            document.getElementById("spinner-wrapper").style.display = "block";
+        }
+    }
+    var hideSpinner = function() {
+        if ($("#spinner-wrapper").length > 0) { //CONTROL DE NULL, POR LAS DUDAS
+            document.getElementById("spinner-wrapper").style.display = "none";
+        }
+    }
+});
