@@ -144,7 +144,7 @@ function controlFinal() {
         if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
             alert("pago realizado con exito");
         } else {
-            alert("debe confirmar el medio de pago");
+            alert("debe completar datos de medio de pago");
         }
     } else {
         alert("debe completar la direccion");
