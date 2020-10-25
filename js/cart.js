@@ -37,7 +37,6 @@ function dibujoArticulos() {
     var htmlContentToAppend = "";
     for (var i = 0; i < articleList.length; i++) {
         var precioArticuloLinea = articleList[i].unitCost * articleList[i].count;
-
         if (articleList[i].currency == "USD") { //PASO A PESOS CUALQUIER ELEMENTO QUE ESTE EN DOLARES
             articleList[i].unitCost = articleList[i].unitCost * cotizacion;
             articleList[i].currency = "UYU";
@@ -82,7 +81,6 @@ function recalculateCart() {
     tipoEnvio = $("input[name='optradio']:checked").val(); //CALCULOS
     costoEnvio = tipoEnvio * subtotal;
     total = subtotal + costoEnvio;
-
     /* Update totals display */
     $('.totals-value').fadeOut(fadeTime, function() {
         $('#cart-subtotal').html(parseFloat(subtotal).toFixed(2));
@@ -150,7 +148,6 @@ function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODO
     }
 }
 $(document).ready(function() { //DOM CONTENT LOADED
-    //
     getJSONData(CART_BUY_URL).then(function(resultObj) { //CARGO EL MENSAJE "PERSONALIZADO" DEL JSON
         if (resultObj.status === "ok") {
             BUY_SUCCESS_MSG = resultObj.data;
