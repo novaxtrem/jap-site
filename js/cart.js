@@ -77,7 +77,7 @@ function recalculateCart() {
     existenElementos = false;
     $('.item').each(function() { //POR CADA UNA DE LAS "FILAS" (ELEMENTOS ITEMS) QUE ENCUENTRO DENTRO DEL HTML
         subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
-        existenElementos = true
+        existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
     });
     //
     tipoEnvio = $("input[name='optradio']:checked").val(); //CALCULOS
