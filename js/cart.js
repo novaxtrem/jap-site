@@ -3,7 +3,7 @@ var fadeTimeCards = 300;
 let articleList = [];
 var moneda;
 const cotizacion = 40;
-
+var existenElementos = false;
 //SHOW ME YOUR KUNG FU
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
@@ -74,8 +74,10 @@ function recalculateCart() {
     var tipoEnvio = 0;
     var total = 0;
     //
+    existenElementos = false;
     $('.item').each(function() { //POR CADA UNA DE LAS "FILAS" (ELEMENTOS ITEMS) QUE ENCUENTRO DENTRO DEL HTML
         subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
+        existenElementos = true
     });
     //
     tipoEnvio = $("input[name='optradio']:checked").val(); //CALCULOS
@@ -137,14 +139,18 @@ function metodoDepago(optionSelected) { //RESETEO LAS VARIABLES DE LSO INPUTS CU
 }
 
 function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODOS LOS INPUT DE LA PAGINA Y/O FILTRAR POR CLASE, PERO TA; ERAN POCOS PINTO ID
-    if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
-        if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
-            alert(BUY_SUCCESS_MSG.msg); //SE DEBERIA VALIDAR QUE EXISTAN ELEMENTOS EN LA "TABLA DE ARTICLOS",
-        } else { //PAARA NO GENERAR UNA ORDEN DE CERO PESOS SIN ARTICULOS, PERO NO SE EXPECIFICA QUE SE REQUIERA ESE CONTROL
-            alert("debe completar datos de medio de pago"); //ES SOLO UNA O DOS LINEAS MAS DE CODIGO, MHE, MAYBE NEXT TIME
+    if (existenElementos == true) { //VALIDO QUE EXISTAN ELEMENTOS A COMPRAR, ESTO NO LO PIDE LA LETRA LO HAGO DE ONDA Y PORQUE ES UNA SOLA LINEA DE CODIGO
+        if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
+            if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
+                alert(BUY_SUCCESS_MSG.msg);
+            } else {
+                alert("debe completar datos de medio de pago");
+            }
+        } else {
+            alert("debe completar la direccion");
         }
     } else {
-        alert("debe completar la direccion");
+        alert("no tiene elementos en el carrito de compra");
     }
 }
 $(document).ready(function() { //DOM CONTENT LOADED
