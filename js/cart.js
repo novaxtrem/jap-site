@@ -139,9 +139,9 @@ function metodoDepago(optionSelected) { //RESETEO LAS VARIABLES DE LSO INPUTS CU
 function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODOS LOS INPUT DE LA PAGINA Y/O FILTRAR POR CLASE, PERO TA; ERAN POCOS PINTO ID
     if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
         if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
-            alert(BUY_SUCCESS_MSG.msg);
-        } else {
-            alert("debe completar datos de medio de pago");
+            alert(BUY_SUCCESS_MSG.msg); //SE DEBERIA VALIDAR QUE EXISTAN ELEMENTOS EN LA "TABLA DE ARTICLOS",
+        } else { //PAARA NO GENERAR UNA ORDEN DE CERO PESOS SIN ARTICULOS, PERO NO SE EXPECIFICA QUE SE REQUIERA ESE CONTROL
+            alert("debe completar datos de medio de pago"); //ES SOLO UNA O DOS LINEAS MAS DE CODIGO, MHE, MAYBE NEXT TIME
         }
     } else {
         alert("debe completar la direccion");
