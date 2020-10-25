@@ -157,6 +157,9 @@ $(document).ready(function() { //DOM CONTENT LOADED
     //
     $('.pass-quantity input').change(function() {
         updateQuantity(this); //LE PASO EL ELEMENTO QUE DISPARO EL EVENTO A LA FUNCION
+        if ($(this).val() == "") {
+            $(this).val("0");
+        }
     });
     $('.remove-item button').click(function() {
         removeItem(this);
