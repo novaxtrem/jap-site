@@ -10,8 +10,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = loginForm.pass.value;
 
         if (username == "user@net.com" && password == "1234") {
-            //alert("You have successfully logged in.");
-            localStorage.setItem('USERNAME', username);
+            localStorage.setItem('NOMBRE', "Jonh");
+            localStorage.setItem('APELLIDO', "Constantine");
+            localStorage.setItem('USER_EMAIL', username);
+            localStorage.setItem('TELEFONO', "097575958");
+            localStorage.setItem('DIRECCION', "Av True Value 7777");
+            localStorage.setItem('PAIS', "Uruguay");
+            //
             localStorage.setItem("USER_PROFILE_IMG", "https://image.flaticon.com/icons/svg/244/244341.svg");
             window.location.href = "mainPage.html";
         } else {
