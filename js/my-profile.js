@@ -7,7 +7,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
         alert("entre");
-        $.get('/php/conection.php');
+        $.post(
+            'php/conection.php', // location of your php script
+            { name: "bob", user_id: 1234 }, // any data you want to send to the script
+            function(data) { // a function to deal with the returned information
+
+                // $( 'body ').append( data );
+
+            });
         alert("sali");
     });
 
