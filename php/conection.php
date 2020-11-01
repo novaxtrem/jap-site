@@ -1,16 +1,7 @@
 <?php
-$servername = "https://remotemysql.com/";
-$username = "nN3gpTO4n0";
-$password = "mOlXuDZFaT";
+alert("Hello World");
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
 }
-
-echo "<script type='text/javascript'>alert('$conn');</script>";
-echo "Connected successfully";
 ?>
