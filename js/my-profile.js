@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
         alert("entre");
-        $.get('php/conection.php');
+        $.get('/php/conection.php');
         alert("sali");
     });
 
