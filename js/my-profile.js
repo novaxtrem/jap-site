@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
         $.get('php/conection.php', function(data) {
+            alert("jhfgjhg");
             eval(data);
         });
     });
