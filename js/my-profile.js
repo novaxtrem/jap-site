@@ -14,17 +14,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
         });
     });
 
-    // handles drawing an error message
-    function drawError() {
-        var container = document.getElementById('output');
-        container.innerHTML = 'Bummer: there was an error!';
-    }
-    // handles the response, adds the html
-    function drawOutput(responseText) {
-        var container = document.getElementById('output');
-        container.innerHTML = responseText;
-    }
-
 
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
