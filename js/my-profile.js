@@ -6,13 +6,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        getRequest(
-            'php/conection.php', // URL for the PHP file
-            drawOutput, // handle successful request
-            drawError // handle error
-        );
-        return false;
-
+        var params = "session=123";
+        $.post('php/conection.php', params, function(data) {
+            alert(data); //for testing if data is being fetched
+            var myObject = eval('(' + data + ')');
+            document.getElementById("result").value = myObject(addend_1, addend_2);
+        });
     });
 
     // handles drawing an error message
