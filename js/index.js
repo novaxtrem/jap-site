@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('APELLIDO', "Constantine");
             localStorage.setItem('USER_EMAIL', username);
             localStorage.setItem('TELEFONO', "097575958");
-            localStorage.setItem('DIRECCION', "Av True Value 7777");
-            localStorage.setItem('PAIS', "Uruguay");
+            localStorage.setItem('EDAD', "22");
             //
             localStorage.setItem("USER_PROFILE_IMG", "https://image.flaticon.com/icons/svg/244/244341.svg");
             window.location.href = "mainPage.html";

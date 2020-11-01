@@ -3,6 +3,15 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
 
+
+
+    $('#test').click(function() {
+        $.get('php/conection.php', function(data) {
+            eval(data);
+        });
+    });
+
+
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
         <div class="col-md-4 border-right">
@@ -24,19 +33,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     <div name="input-telefono" class="col-md-6"><input type="text" class="form-control" placeholder="Telefono" value="` + localStorage.getItem("TELEFONO") + `"></div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Direccion" value="` + localStorage.getItem("DIRECCION") + `"></div>
-                    <div class="col-md-6">
-                        <select id="pais" class="form-control" name="pais">
-                            <option value="Uraguay">Uruguay</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Bolivia">Bolivia</option>
-                            <option value="Brazil">Brazil</option>   
-                            <option value="Chile">Chile</option>
-                            <option value="Colombia">Colombia</option>
-                            <option value="Ecuador">Ecuador</option>
-                            <option value="Venezuela">Venezuela</option>
-                        </select>
-                    </div>
+                    <div class="col-md-6"><input type="text" class="form-control" placeholder="Edad" value="` + localStorage.getItem("EDAD") + `"></div>
+                   
                 </div>
                 <div class="mt-5 text-right">
                     <button id="guardarCambios" class="btn btn-primary profile-button" type="button">Guardar cambios</button>

@@ -1,5 +1,4 @@
 var autenticado = false;
-// alert("lei el file")
 if (localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USER_EMAIL") == null || localStorage.getItem("USER_EMAIL") == "") {
     alert("no hay usuario, debe iniciar sesion")
     window.location.href = "index.html";
@@ -7,12 +6,9 @@ if (localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USE
     autenticado = true;
 }
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     var htmlContentToAppend = "";
     if ($('#mainNav').length > 0 && !(localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USER_EMAIL") == null || localStorage.getItem("USER_EMAIL") == "")) {
-        //const userNavBtn = document.createElement('ul');
         htmlContentToAppend += `<nav class="site-header sticky-top py-1 bg-dark">
           <div class="container d-flex flex-column flex-md-row justify-content-between">
               <a class="py-2 d-none d-md-inline-block" href="mainPage.html">Inicio</a>
