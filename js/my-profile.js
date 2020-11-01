@@ -6,12 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        var params = "session=123";
-        $.post('php/conection.php', params, function(data) {
-            alert(data); //for testing if data is being fetched
-            var myObject = eval('(' + data + ')');
-            document.getElementById("result").value = myObject(addend_1, addend_2);
-        });
+        $.get('php/conection.php');
     });
 
 
