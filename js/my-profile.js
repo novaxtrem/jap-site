@@ -6,11 +6,25 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        $.get('php/conection.php', function(data) {
-            alert("jhfgjhg");
-            eval(data);
-        });
+        getRequest(
+            'php/conection.php', // URL for the PHP file
+            drawOutput, // handle successful request
+            drawError // handle error
+        );
+        return false;
+
     });
+
+    // handles drawing an error message
+    function drawError() {
+        var container = document.getElementById('output');
+        container.innerHTML = 'Bummer: there was an error!';
+    }
+    // handles the response, adds the html
+    function drawOutput(responseText) {
+        var container = document.getElementById('output');
+        container.innerHTML = responseText;
+    }
 
 
     var htmlContentToAppend = "";
