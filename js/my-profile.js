@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     $('#test').click(function() {
         alert("entre");
         $.post(
-            'php/conection.php', // location of your php script
+            '/php/connection.php', // location of your php script
             { name: "bob", user_id: 1234 }, // any data you want to send to the script
             function(data) { // a function to deal with the returned information
 
