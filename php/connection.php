@@ -10,6 +10,17 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection to database failed: " . $conn->connect_error);
 }
-echo "<script type='text/javascript'>alert('$conn');</script>";
+
+$sql ="SELECT * from usuarios";
+$result = $conn->query($sql);
+/* If there are results from database push to result array */
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        array_push($result_array, $row);
+    }
+}
+/* send a JSON encded array to client */
+header('Content-type: application/json');
+echo json_encode($result_array);
 $conn->close();
 ?>

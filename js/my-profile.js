@@ -10,17 +10,30 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         $.ajax({
             method: "GET",
+
             url: "php/connection.php",
-        }).done(function() {
-            alert("coso");
+        }).done(function(data) {
+            var result = $.parseJSON(data);
+            var string = '<table width="100%"><tr> <th>#</th><th>Name</th> <th>Email</th><tr>';
+
+            /* from result create a string of data and append to the div */
+
+            $.each(result, function(key, value) {
+
+                string += "<tr> <td>" + value['id'] + "</td><td>" + value['first_name'] + ' ' + value['last_name'] + '</td>  \
+                        <td>' + value['email'] + "</td> </tr>";
+            });
+            string += '</table>';
+            $("#records").html(string);
         });
     });
+});
 
 
 
 
-    var htmlContentToAppend = "";
-    htmlContentToAppend += `<div class="row">
+var htmlContentToAppend = "";
+htmlContentToAppend += `<div class="row">
         <div class="col-md-4 border-right">
             <div name="profile-lateral-resume" class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="` + localStorage.getItem("USER_PROFILE_IMG") + `" width="90"><span class="font-weight-bold">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</span><h5 class="text-black-50">` + localStorage.getItem("USER_EMAIL") + `</h5></div>
         </div>
@@ -49,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             </div>
         </div>
     </div>`;
-    document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
+document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
 
 
 });
