@@ -3,6 +3,10 @@ $servername = "remotemysql.com:3306";
 $username = "nN3gpTO4n0";
 $password = "mOlXuDZFaT";
 
+
+echo '<script language="javascript">';
+echo 'alert("message successfully sent")';
+echo '</script>';
 // Create connection
 $conn = new mysqli($servername, $username, $password);
 
