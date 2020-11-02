@@ -27,13 +27,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
             $("#records").html(string);
         });
     });
-});
 
 
 
 
-var htmlContentToAppend = "";
-htmlContentToAppend += `<div class="row">
+
+    var htmlContentToAppend = "";
+    htmlContentToAppend += `<div class="row">
         <div class="col-md-4 border-right">
             <div name="profile-lateral-resume" class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" src="` + localStorage.getItem("USER_PROFILE_IMG") + `" width="90"><span class="font-weight-bold">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</span><h5 class="text-black-50">` + localStorage.getItem("USER_EMAIL") + `</h5></div>
         </div>
@@ -62,7 +62,7 @@ htmlContentToAppend += `<div class="row">
             </div>
         </div>
     </div>`;
-document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
+    document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
 
 
 });
