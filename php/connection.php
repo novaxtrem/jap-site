@@ -1,22 +1,15 @@
 <?php
-$servername = "remotemysql.com:3306";
-$username = "nN3gpTO4n0";
-$password = "mOlXuDZFaT";
-
-
-echo '<script language="javascript">';
-echo 'alert("message successfully sent")';
-echo '</script>';
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
+$host         = "remotemysql.com:3306";
+$username     = "nN3gpTO4n0";
+$password     = "mOlXuDZFaT";
+$dbname       = "nN3gpTO4n0";
+$result_array = array();
+/* Create connection */
+$conn = new mysqli($host, $username, $password, $dbname);
+/* Check connection  */
 if ($conn->connect_error) {
-$mensaje ="cosopum";
-  die("Connection failed: " . $conn->connect_error);
-  echo "<script type='text/javascript'>alert('$mensaje');</script>";
+    die("Connection to database failed: " . $conn->connect_error);
 }
-
 echo "<script type='text/javascript'>alert('$conn');</script>";
-echo "Connected successfully";
+$conn->close();
 ?>

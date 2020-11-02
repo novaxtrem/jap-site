@@ -7,11 +7,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "php/connection.php");
 
-
+        $.ajax({
+            method: "GET",
+            url: "php/connection.php",
+        }).done(function() {
+            alert("coso");
+        });
     });
+
+
 
 
     var htmlContentToAppend = "";
