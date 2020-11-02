@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
             $.each(result, function(key, value) {
 
-                string += "<tr> <td>" + value['id'] + "</td><td>" + value['first_name'] + ' ' + value['last_name'] + '</td>  \
-                        <td>' + value['email'] + "</td> </tr>";
+                string += "<tr> <td>" + value['id'] + "</td><td>" + value['name'] + ' ' + value['last_name'] + '</td>  \
+                        <td>' + value['age'] + ' ' + value['image_profile'] + ' ' + value['phone_num'] + ' ' + value['email'] + "</td> </tr>";
             });
             string += '</table>';
             $("#records").html(string);
