@@ -6,16 +6,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        alert("entre");
-        $.get(
-            'php/connection.php', // location of your php script
-            //   { name: "bob", user_id: 1234 }, // any data you want to send to the script
-            function(data) { // a function to deal with the returned information
 
-                // $( 'body ').append( data );
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "php/connection.php");
 
-            });
-        alert("sali");
+
     });
 
 
