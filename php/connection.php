@@ -1,26 +1,15 @@
 <?php
-$host         = "remotemysql.com:3306";
-$username     = "nN3gpTO4n0";
-$password     = "mOlXuDZFaT";
-$dbname       = "nN3gpTO4n0";
-$result_array = array();
-/* Create connection */
-$conn = new mysqli($host, $username, $password, $dbname);
-/* Check connection  */
-if ($conn->connect_error) {
-    die("Connection to database failed: " . $conn->connect_error);
+//Configuracion de la conexion a base de datos
+$bd_host = "remotemysql.com:3306";
+$bd_usuario = "nN3gpTO4n0";
+$bd_password = "mOlXuDZFaT";
+$bd_base = "nN3gpTO4n0";
+$con = mysql_connect($bd_host, $bd_usuario, $bd_password);
+mysql_select_db($bd_base, $con);
+//consulta todos los empleados
+$sql = mysql_query("SELECT * FROM usuarios", $con);
+//muestra los datos consultados
+echo "</p>Nombres - Departamento - Sueldo</p> \n";
+while ($row = mysql_fetch_array($sql)) {
+    echo "<p>" . $row['name'] . " - " . $row['age'] . " - " . $row['email'] . "</p> \n";
 }
-
-$sql ="SELECT * from usuarios";
-$result = $conn->query($sql);
-/* If there are results from database push to result array */
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        array_push($result_array, $row);
-    }
-}
-/* send a JSON encded array to client */
-header('Content-type: application/json');
-echo json_encode($result_array);
-$conn->close();
-?>

@@ -1,31 +1,44 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+var datos = "php/connection.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
 
 
+    function objetoAjax() {
+        var xmlhttp = false;
+        try {
+            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (E) {
+                xmlhttp = false;
+            }
+        }
+        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+            xmlhttp = new XMLHttpRequest();
+        }
+        return xmlhttp;
+    }
+
+
+
+    function MostrarConsulta(datos) {
+        divResultado = document.getElementById('resultado');
+        ajax = objetoAjax();
+        ajax.open("GET", datos);
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4) {
+                divResultado.innerHTML = ajax.responseText
+            }
+        }
+        ajax.send(null)
+    }
+
+
     $('#test').click(function() {
 
-
-        $.ajax({
-            method: "GET",
-
-            url: "php/connection.php",
-        }).done(function(data) {
-            var result = $.parseJSON(data);
-            var string = '<table width="100%"><tr> <th>#</th><th>Name</th> <th>Email</th><tr>';
-
-            /* from result create a string of data and append to the div */
-
-            $.each(result, function(key, value) {
-
-                string += "<tr> <td>" + value['id'] + "</td><td>" + value['name'] + ' ' + value['last_name'] + '</td>  \
-                        <td>' + value['age'] + ' ' + value['image_profile'] + ' ' + value['phone_num'] + ' ' + value['email'] + "</td> </tr>";
-            });
-            string += '</table>';
-            $("#records").html(string);
-        });
+        objetoAjax();
+        MostrarConsulta(datos);
     });
 
 
