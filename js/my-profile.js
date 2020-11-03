@@ -5,11 +5,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
         var url = "php/consultas.php";
-        $("#resultado").html("");
         $.getJSON(url, function(usuarios) {
             $.each(usuarios, function(i, usuario) {
-
-                console.log(usuarios[i].name);
+                alert("sdasd");
+                console.log(usuario[i].name);
             });
         });
 
