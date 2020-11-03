@@ -1,4 +1,4 @@
-var datos = "php/connection.php";
+var datos = "php/consulta.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
 
