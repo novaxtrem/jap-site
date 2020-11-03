@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         var conexion1;
         conexion1 = new XMLHttpRequest();
-        conexion1.onreadystatechange = procesarEventos;
+
         conexion1.open('GET', 'php/consultas.php', true);
         conexion1.send();
 
