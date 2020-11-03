@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     $('#test').click(function() {
         $.ajax({
             type: 'GET',
-            url: 'php/consulta.php',
+            url: 'php/consultas.php',
             success: function(data) {
                 console.log(JSON.parse(data));
             },
