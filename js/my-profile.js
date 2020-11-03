@@ -11,19 +11,19 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         conexion1.open('GET', 'php/consultas.php', true);
         conexion1.send();
-        alert(conexion1);
-        if (conexion1.readyState == 4) {
-            alert('Cadena en formato JSON:  ' + conexion1.responseText);
+        console.log(conexion1);
+        // if (conexion1.readyState == 4) {
+        alert('Cadena en formato JSON:  ' + conexion1.responseText);
 
-            var datos = JSON.parse(conexion1.responseText);
-            var salida = '';
-            for (var f = 0; f < datos.length; f++) {
-                salida += 'Codigo:' + datos[f].name + "<br>";
-            }
-            document.getElementById("resultado").innerHTML = salida;
-        } else {
-            document.getElementById("resultado").innerHTML = "Cargando...";
+        var datos = JSON.parse(conexion1.responseText);
+        var salida = '';
+        for (var f = 0; f < datos.length; f++) {
+            salida += 'Codigo:' + datos[f].name + "<br>";
         }
+        document.getElementById("resultado").innerHTML = salida;
+        //} else {
+        //    document.getElementById("resultado").innerHTML = "Cargando...";
+        //  }
 
     });
 
