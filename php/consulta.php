@@ -14,8 +14,13 @@ mysql_select_db($bd_base, $con);
 $sql=mysql_query("SELECT * FROM usuarios",$con);
 
 //muestra los datos consultados
-echo "</p>Nombres - Departamento - Sueldo</p> \n";
-while($row = mysql_fetch_array($sql)){
-	echo "<p>".$row['name']." - ".$row['age']." - ".$row['email']."</p> \n";
+
+while($fila=$resultado -> fetch_array()){
+	$categorias[] = array_map('utf8_encode', $fila);
 }
+
+echo json_encode($categorias);
+$resultado -> close();
+
+
 ?>
