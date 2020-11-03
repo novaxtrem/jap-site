@@ -13,3 +13,4 @@ echo "</p>Nombres - Departamento - Sueldo</p> \n";
 while ($row = mysql_fetch_array($sql)) {
     echo "<p>" . $row['name'] . " - " . $row['age'] . " - " . $row['email'] . "</p> \n";
 }
+?>
