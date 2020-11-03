@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
             if (xhr.status == 200) {
                 var json = JSON.parse(xhr.responseText);
                 var template = ``;
+                console.log(xhr.responseText);
+
                 json.map(function(data) {
 
                     template += `
