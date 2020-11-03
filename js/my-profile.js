@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
         $.ajax({
-            url: 'conexion.php',
+            url: 'php/conexion.php',
             success: function(data) {
                 $('.result').html(data);
             }
