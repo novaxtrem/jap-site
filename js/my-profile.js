@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         // if (conexion1.readyState == 4) {
         alert('Cadena en formato JSON:  ' + conexion1.responseText);
 
-        var datos = JSON.parse(conexion1.responseText);
+        var datos = conexion1.responseText;
         var salida = '';
         for (var f = 0; f < datos.length; f++) {
             salida += 'Codigo:' + datos[f].name + "<br>";
