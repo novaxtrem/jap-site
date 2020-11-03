@@ -7,9 +7,10 @@ $bd_base = "nN3gpTO4n0";
 $con = mysql_connect($bd_host, $bd_usuario, $bd_password);
 mysql_select_db($bd_base, $con);
 //consulta todos los empleados
-$sql = mysql_query("SELECT * FROM empleados", $con);
+$sql = mysql_query("SELECT * FROM usuarios", $con);
 //muestra los datos consultados
 echo "</p>Nombres - Departamento - Sueldo</p> \n";
 while ($row = mysql_fetch_array($sql)) {
-    echo "<p>" . $row['nombres'] . " - " . $row['departamento'] . " - " . $row['sueldo'] . "</p> \n";
+    echo "<p>" . $row['name'] . " - " . "</p> \n";
 }
+?>
