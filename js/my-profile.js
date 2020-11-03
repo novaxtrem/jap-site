@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         alert("coso");
 
         var data = $('frm').serialize();
+        jQuery.support.cors = true;
         $.ajax({
             type: "GET",
             url: "php/coso.php",
