@@ -1,5 +1,13 @@
 <?php
-include 'php/conexion.php';
+ 
+
+$hostname='remotemysql.com:3306';
+$username='nN3gpTO4n0';
+$password='mOlXuDZFaT';
+$database='nN3gpTO4n0';
+
+$conexion = mysqli_connect($hostname, $username, $password,$database) 
+or die("Ha sucedido un error inexperado en la conexion de la base de datos");
 
 //generamos la consulta
 $sql = "SELECT * FROM usuarios";
@@ -26,7 +34,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 //desconectamos la base de datos
-$close = mysqli_close($conexion) or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
+//$close = mysqli_close($conexion) or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
 
 //Creamos el JSON
 $json_string = json_encode($usuarios);
