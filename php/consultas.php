@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include 'php/conexion.php';
 
 /*$mimiatura = $_POST['mimiatura'];
 $tituloCategoria = $_POST['titulo-categoria'];
