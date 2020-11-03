@@ -2,6 +2,7 @@ var datos = "php/consulta.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
+        alert("cosopum");
         $.ajax({
             url: 'php/conexion.php',
             success: function(data) {
