@@ -1,21 +1,34 @@
 <?php
 include 'php/conexion.php';
 
-/*$mimiatura = $_POST['mimiatura'];
-$tituloCategoria = $_POST['titulo-categoria'];
-$articulosCategoria = $_POST['articulos-categoria'];
-$descripcionCategoria = $_POST['descripcion-categoria'];
-*/
+//generamos la consulta
+$sql = "SELECT * FROM usuarios";
+mysqli_set_charset($conexion, "utf8"); //formato de datos utf8
 
-	$consultoCategorias = "SELECT * FROM `usuarios`";
-	$resultado = $conexion -> query($consultoCategorias);
-	
-	while($fila=$resultado -> fetch_array()){
-		$categorias[] = array_map('utf8_encode', $fila);
-	}
-	
+if (!$result = mysqli_query($conexion, $sql)) {
+    die();
+}
 
-	echo json_encode($categorias);
-	$resultado -> close();
+$usuarios = array(); //creamos un array
 
+while ($row = mysqli_fetch_array($result)) {
+    $id = $row['id'];
+    $nombre = $row['name'];
+    $apellido = $row['last_name'];
+    $edad = $row['age'];
+    $imagenPerfil = $row['image_profile'];
+    $telefono = $row['phone_num'];
+    $email = $row['email'];
+
+    $usuarios[] = array('id' => $id, 'name' => $nombre, 'last_name' => $apellido, 'age' => $edad,
+        'image_profile' => $imagenPerfil, 'phone_num' => $telefono, 'email' => $email);
+
+}
+
+//desconectamos la base de datos
+$close = mysqli_close($conexion) or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
+
+//Creamos el JSON
+$json_string = json_encode($usuarios);
+echo $json_string;
 ?>

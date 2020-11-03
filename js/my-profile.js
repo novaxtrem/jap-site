@@ -4,14 +4,23 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        $.ajax({
-            type: 'GET',
-            url: 'php/consultas.php',
-            success: function(data) {
-                console.log(JSON.parse(data));
-            },
+        var url = "php/consultas.php";
+        $("#resultado").html("");
+        $.getJSON(url, function(usuarios) {
+            $.each(usuarios, function(i, usuario) {
+                var newRow =
+                    "<tr>" +
+                    "<td>" + cliente.id + "</td>" +
+                    "<td>" + cliente.name + "</td>" +
+                    "<td>" + cliente.apellido + "</td>" +
+                    "<td>" + cliente.edad + "</td>" +
+                    "<td>" + cliente.imagenPerfil + "</td>" +
+                    "<td>" + cliente.telefono + "</td>" +
+                    "<td>" + cliente.email + "</td>" +
+                    "</tr>";
+                $(newRow).appendTo("#resultado");
+            });
         });
-
 
     });
 
