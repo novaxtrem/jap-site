@@ -13,6 +13,7 @@ $descripcionCategoria = $_POST['descripcion-categoria'];
 	while($fila=$resultado -> fetch_array()){
 		$categorias[] = array_map('utf8_encode', $fila);
 	}
+	
 
 	echo json_encode($categorias);
 	$resultado -> close();

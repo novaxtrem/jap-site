@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         xhr.open("GET", "php/consultas.php");
         xhr.onload = function() {
             if (xhr.status == 200) {
-                var json = JSON.parse(xhr.responseText);
+                var json = xhr.responseText;
                 var template = ``;
                 console.log(xhr.responseText);
 
