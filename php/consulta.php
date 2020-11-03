@@ -1,5 +1,5 @@
 <?php 
-	require('conexion.php');
+	require('php/conexion.php');
 	$con = Conectar();
 	$SQL = 'SELECT * FROM usuarios';
 	$stmt = $con->prepare($SQL);
