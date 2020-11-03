@@ -3,42 +3,42 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
 
-    function objetoAjax() {
-        var xmlhttp = false;
-        try {
-            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (E) {
-                xmlhttp = false;
-            }
-        }
-        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-            xmlhttp = new XMLHttpRequest();
-        }
-        return xmlhttp;
-    }
 
-
-
-    function MostrarConsulta(datos) {
-        divResultado = document.getElementById('resultado');
-        ajax = objetoAjax();
-        ajax.open("GET", datos);
-        ajax.onreadystatechange = function() {
-            if (ajax.readyState == 4) {
-                divResultado.innerHTML = ajax.responseText
-            }
-        }
-        ajax.send(null)
-    }
 
 
     $('#test').click(function() {
 
-        objetoAjax();
-        MostrarConsulta(datos);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "consultas.php");
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                var json = JSON.parse(xhr.responseText);
+                var template = ``;
+                json.map(function(data) {
+                    var cantidadObjetosEnCategoria = 0;
+                    template += `
+                    
+                    <li class="row">
+                        <img class="mimiatura" src="${data.age}">
+                        <h3 class="titulo-categoria" name="tituloCategoria">${data.name}</h3>
+                        <span class="articulos-categoria">${cantidadObjetosEnCategoria}</span>
+                        <p class="descripcion-categoria">${data.email}</p>
+                    </li>
+                    `;
+                    return template;
+                });
+
+                document.getElementById("resultado").innerHTML = template;
+                console.log(template);
+            } else {
+                console.log("erro de tipo: " + xhr.status)
+            }
+        }
+        xhr.send();
+
+
+
+
     });
 
 
