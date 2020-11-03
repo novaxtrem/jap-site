@@ -1,13 +1,7 @@
 <?php
-/* La conexion con MySQLi */
-$servername = "remotemysql.com:3306";
-$username = "nN3gpTO4n0";
-$password = "mOlXuDZFaT";
-$dbname = "nN3gpTO4n0";
-$conn = mysqli_connect($servername, $username, $password, $dbname) or die("Conexion fallida: " . mysqli_connect_error());
-// Imprime si existe algun error
-if (mysqli_connect_errno()) {
-    printf("La conexion ha fallado: %s\n", mysqli_connect_error());
-    exit();
-}
+$host="remotemysql.com:3306";
+$user="nN3gpTO4n0";
+$password="mOlXuDZFaT";
+
+$link = mysql_connect ($host, $user, $password) or die ("<center>No se puede conectar con la base de datos\n</center>\n");
 ?>
