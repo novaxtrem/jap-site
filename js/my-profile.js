@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         var data = $('frm').serialize();
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "php/coso.php",
             data: data,
             success: function(e) {}
