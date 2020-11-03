@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
         conexion1.open('GET', 'php/consultas.php', true);
         conexion1.send();
-
+        alert(conexion1);
         if (conexion1.readyState == 4) {
             alert('Cadena en formato JSON:  ' + conexion1.responseText);
 
