@@ -8,17 +8,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         $("#resultado").html("");
         $.getJSON(url, function(usuarios) {
             $.each(usuarios, function(i, usuario) {
-                var newRow =
-                    "<tr>" +
-                    "<td>" + cliente.id + "</td>" +
-                    "<td>" + cliente.name + "</td>" +
-                    "<td>" + cliente.apellido + "</td>" +
-                    "<td>" + cliente.edad + "</td>" +
-                    "<td>" + cliente.imagenPerfil + "</td>" +
-                    "<td>" + cliente.telefono + "</td>" +
-                    "<td>" + cliente.email + "</td>" +
-                    "</tr>";
-                $(newRow).appendTo("#resultado");
+
+                console.log(usuarios[i].name);
             });
         });
 
