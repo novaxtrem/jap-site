@@ -6,11 +6,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     $("#test").addEventListener("click", (e) => {
 
         $.ajax({
-            type: "GET",
-            url: "php/conexion.php",
-            data: data,
-            success: function(e) {
-
+            url: 'conexion.php',
+            success: function(data) {
+                $('.result').html(data);
             }
         });
 
