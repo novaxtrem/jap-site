@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     $('#getUser').on('click', function() {
         var user_id = $('#user_id').val();
         $.ajax({
-            type: 'POST',
+            type: 'GET',
             url: 'getData.php',
             dataType: "json",
             data: { user_id: user_id },
