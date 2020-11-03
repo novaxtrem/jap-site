@@ -15,13 +15,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 var json = JSON.parse(xhr.responseText);
                 var template = ``;
                 json.map(function(data) {
-                    var cantidadObjetosEnCategoria = 0;
                     template += `
                     
                     <li class="row">
-                        <img class="mimiatura" src="${data.age}">
+             
                         <h3 class="titulo-categoria" name="tituloCategoria">${data.name}</h3>
-                        <span class="articulos-categoria">${cantidadObjetosEnCategoria}</span>
                         <p class="descripcion-categoria">${data.email}</p>
                     </li>
                     `;

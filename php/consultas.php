@@ -7,7 +7,7 @@ $articulosCategoria = $_POST['articulos-categoria'];
 $descripcionCategoria = $_POST['descripcion-categoria'];
 */
 
-	$consultoCategorias = "SELECT * FROM `usuarios`";
+	$consultoCategorias = "SELECT * FROM 'usuarios'";
 	$resultado = $conexion -> query($consultoCategorias);
 	
 	while($fila=$resultado -> fetch_array()){
