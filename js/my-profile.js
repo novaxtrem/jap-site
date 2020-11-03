@@ -1,12 +1,11 @@
-var datos = "php/consulta.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
-    $('#test').click(function() {
+    $('#test1').click(function() {
         alert("cosopum");
         $.ajax({
             url: 'php/conexion.php',
             success: function(data) {
-                $('.result').html(data);
+                $('#resultado').html(data);
             }
         });
     });
