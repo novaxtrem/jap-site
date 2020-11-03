@@ -4,33 +4,26 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "consultas.php");
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                var json = JSON.parse(xhr.responseText);
+                var template = ``;
+                json.map(function(data) {
 
+                    template += `
+                <p class="descripcion-categoria">${data.email}</p>`;
+                    return template;
+                });
 
-        var xmlhttp = new XMLHttpRequest();
-        var url = "php/consulta.php";
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var array = JSON.parse(xmlhttp.responseText);
-                var i;
-                var out = "<table border='1'>";
-                for (i = 0; i < array.length; i++) {
-                    out += " <tr><td>" +
-                        array[i].id +
-                        "</td><td>" +
-                        array[i].name +
-                        "</td><td>" +
-                        array[i].age +
-                        "</td><td>" +
-                        array[i].email +
-                        "</td></tr>";
-                }
-                out += "</table>";
-                document.getElementById("resultado").innerHTML = out;
+                document.getElementById("resultado").innerHTML = template;
+                console.log(template);
+            } else {
+                console.log("erro de tipo: " + xhr.status)
             }
         }
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
-
+        xhr.send();
 
 
     });
