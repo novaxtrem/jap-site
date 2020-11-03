@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
             type: "GET",
             url: "php/coso.php",
             data: data,
-            success: function(e) {}
+            success: function(e) {
+
+            }
         });
         return false; //Evita la recarga
 

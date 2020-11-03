@@ -1,5 +1,5 @@
 <?php
-include 'php/bd.php';
+include 'php/DB.php';
 
 $conn = DB::getInstance() -> getConnection();
 $regists = $conn -> prepare("select * from usuarios;");
