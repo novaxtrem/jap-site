@@ -5,15 +5,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
 
-        var url = "php/consultas.php";
+        $.ajax({
+            url: 'php/consultas.php',
+            data: $(this).serialize(),
+            method: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var user = data[0];
 
-        $.getJSON(url, function(usuarios) {
-
-            alert(usuarios);
-            $.each(usuarios, function(i, usuario) {
-
-                console.log(usuario[i].name);
-            });
+                $('#resultado').html("<b>id: </b>" + user + "<b> name: </b>");
+            }
         });
 
     });
