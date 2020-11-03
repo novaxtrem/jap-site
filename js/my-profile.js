@@ -2,61 +2,38 @@ var datos = "php/consulta.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
 
-    function objetoAjax() {
-        var xmlhttp = false;
-        try {
-            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (E) {
-                xmlhttp = false;
-            }
-        }
-
-        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-            xmlhttp = new XMLHttpRequest();
-
-        }
-
-        return xmlhttp;
-
-    }
-
-    function MostrarConsulta(datos) {
-
-        divResultado = document.getElementById('resultado');
-
-        ajax = objetoAjax();
-
-        ajax.open("GET", datos);
-
-        ajax.onreadystatechange = function() {
-
-            if (ajax.readyState == 4) {
-
-                divResultado.innerHTML = ajax.responseText
-
-            }
-
-        }
-
-        ajax.send(null)
-
-    }
 
     $('#test').click(function() {
 
 
-        objetoAjax();
+        var xmlhttp = new XMLHttpRequest();
+        var url = "consulta.php";
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var array = JSON.parse(xmlhttp.responseText);
+                var i;
+                var out = "<table border='1'>";
+                for (i = 0; i < array.length; i++) {
+                    out += " <tr><td>" +
+                        array[i].id +
+                        "</td><td>" +
+                        array[i].name +
+                        "</td><td>" +
+                        array[i].age +
+                        "</td><td>" +
+                        array[i].email +
+                        "</td></tr>";
+                }
+                out += "</table>";
+                document.getElementById("resultado").innerHTML = out;
+            }
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
 
-        MostrarConsulta(datos);
+
 
     });
-
-
-
-
 
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
@@ -89,6 +66,4 @@ document.addEventListener("DOMContentLoaded", function(e) {
         </div>
     </div>`;
     document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
-
-
 });
