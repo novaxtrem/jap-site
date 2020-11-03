@@ -12,7 +12,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+    <script language="JavaScript" type="text/javascript" src="js/ajax.js"></script>
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -55,6 +55,18 @@
         </div>
     </div>
 
+    <div>
+        <p>Consultar registros con ajax</p>"</p>"
+        <p>
+            <!-- En "onsubmit" escribimos la función 'MostrarConsulta' que creamos en javascript, 
+        con su parametro que es el archivo que vamos a mostrar, en este caso 'consulta.php'-->
+            <form name="consulta" action="" onsubmit="MostrarConsulta('php/consulta.php'); return false">
+                <label>
+        <input type="submit" value="Consultar" />
+        </label>
+            </form>
+            <div id="resultado"></div>
+    </div>
 
     <footer class="text-muted bg-light">
         <div class="container">
