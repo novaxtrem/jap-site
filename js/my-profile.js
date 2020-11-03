@@ -4,28 +4,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $('#test').click(function() {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "php/consultas.php");
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                var json = xhr.responseText;
-                var template = ``;
-                console.log(xhr.responseText);
-
-                json.map(function(data) {
-
-                    template += `
-                <p class="descripcion-categoria">${data.email}</p>`;
-                    return template;
-                });
-
-                document.getElementById("resultado").innerHTML = template;
-                console.log(template);
-            } else {
-                console.log("erro de tipo: " + xhr.status)
-            }
-        }
-        xhr.send();
+        $.ajax({
+            type: 'GET',
+            url: 'php/consulta.php',
+            success: function(data) {
+                console.log(JSON.parse(data));
+            },
+        });
 
 
     });
