@@ -1,19 +1,14 @@
 var datos = "php/consulta.php";
 document.addEventListener("DOMContentLoaded", function(e) {
 
-
-
-    $("#test").addEventListener("click", (e) => {
-
+    $('#test').click(function() {
         $.ajax({
             url: 'conexion.php',
             success: function(data) {
                 $('.result').html(data);
             }
         });
-
-
-    })
+    });
 
 
     var htmlContentToAppend = "";
