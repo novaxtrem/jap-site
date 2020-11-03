@@ -4,19 +4,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
     $("#test").addEventListener("click", (e) => {
-        alert("coso");
 
-        var data = $('frm').serialize();
-        jQuery.support.cors = true;
         $.ajax({
             type: "GET",
-            url: "php/coso.php",
+            url: "php/conexion.php",
             data: data,
             success: function(e) {
 
             }
         });
-        return false; //Evita la recarga
+
 
     })
 
