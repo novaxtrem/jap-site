@@ -5,17 +5,25 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test').click(function() {
 
-        $.ajax({
-            url: 'php/consultas.php',
-            data: $(this).serialize(),
-            method: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                var user = data[0];
 
-                $('#resultado').html("<b>id: </b>" + user + "<b> name: </b>");
+        var conexion1;
+        conexion1 = new XMLHttpRequest();
+        conexion1.onreadystatechange = procesarEventos;
+        conexion1.open('GET', 'php/consultas.php', true);
+        conexion1.send();
+
+        if (conexion1.readyState == 4) {
+            alert('Cadena en formato JSON:  ' + conexion1.responseText);
+
+            var datos = JSON.parse(conexion1.responseText);
+            var salida = '';
+            for (var f = 0; f < datos.length; f++) {
+                salida += 'Codigo:' + datos[f].name + "<br>";
             }
-        });
+            document.getElementById("resultado").innerHTML = salida;
+        } else {
+            document.getElementById("resultado").innerHTML = "Cargando...";
+        }
 
     });
 
