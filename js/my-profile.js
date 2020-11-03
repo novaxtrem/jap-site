@@ -3,6 +3,20 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
 
+    $("#test").addEventListener("click", (e) => {
+        alert("coso");
+
+        var data = $('frm').serialize();
+        $.ajax({
+            type: "POST",
+            url: "php/coso.php",
+            data: data,
+            success: function(e) {}
+        });
+        return false; //Evita la recarga
+
+    })
+
 
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
