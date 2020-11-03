@@ -3,51 +3,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 
 
-    $('#getUser').on('click', function() {
-        var user_id = $('#user_id').val();
-        $.ajax({
-            type: 'GET',
-            url: 'php/getData.php',
-            dataType: "json",
-            data: { user_id: user_id },
-            success: function(data) {
-                if (data.status == 'ok') {
-                    $('#userName').text(data.result.name);
-                    $('#userEmail').text(data.result.email);
-                    $('#userPhone').text(data.result.phone);
-                    $('#userCreated').text(data.result.created);
-                    $('.user-content').slideDown();
-                } else {
-                    $('.user-content').slideUp();
-                    alert("User not found...");
-                }
-            }
-        });
-    });
-
-    $('#test').click(function() {
-
-
-        var conexion1;
-        conexion1 = new XMLHttpRequest();
-
-        conexion1.open('GET', 'php/consultas.php', true);
-        conexion1.send();
-        console.log(conexion1);
-        // if (conexion1.readyState == 4) {
-        alert('Cadena en formato JSON:  ' + conexion1.responseText);
-
-        var datos = conexion1.responseText;
-        var salida = '';
-        for (var f = 0; f < datos.length; f++) {
-            salida += 'Codigo:' + datos[f].name + "<br>";
-        }
-        document.getElementById("resultado").innerHTML = salida;
-        //} else {
-        //    document.getElementById("resultado").innerHTML = "Cargando...";
-        //  }
-
-    });
 
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
