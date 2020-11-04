@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test1').click(function() {
-        alert("cosopum");
+
         $.ajax({
             url: 'php/conexion.php',
             success: function(data) {
+                alert(data);
                 $('#resultado').html(data);
             }
         });
