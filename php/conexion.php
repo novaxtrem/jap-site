@@ -9,8 +9,10 @@
          
          if(! $conn ) {
             die('Could not connect: ' . mysqli_error());
-            die ("<center>No se puede conectar con la base de datos\n</center>\n");
+           
+         } else {
+             echo 'Connected successfully';
          }
-         echo 'Connected successfully';
+         
          mysqli_close($conn);
       ?>
