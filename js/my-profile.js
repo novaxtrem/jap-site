@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         $.ajax({
             url: 'php/conexion.php',
             success: function(data) {
-                alert(data);
+
                 $('#resultado').html(data);
             }
         });
