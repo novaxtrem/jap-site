@@ -2,13 +2,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     $('#test1').click(function() {
 
-        $.ajax({
-            url: 'php/conexion.php',
-            success: function(data) {
 
-                $('#resultado').html(data);
-            }
-        });
     });
 
 
