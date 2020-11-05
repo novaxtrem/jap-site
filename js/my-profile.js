@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     });
 
 
+
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
         <div class="col-md-4 border-right">

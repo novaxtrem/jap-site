@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             alert("hola");
                         }
                     }
-                    alert("test " + data[i].name);
                     /*var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
                     articleList.push(newArticle); //AGREGO EL OBJETO AL ARRAYLIST
                     */
