@@ -9,8 +9,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = loginForm.userEmail.value;
         const password = loginForm.pass.value;
 
-        getJSONData("https://jap-site.000webhostapp.com/consulta.php").then(function(data) { //CARGO EL MENSAJE "PERSONALIZADO" DEL JSON
-            if (data.status === "ok") {
+        return $.ajax({
+            url: "https://jap-site.000webhostapp.com/consulta.php",
+            type: "GET",
+            dataType: 'json',
+            async: false, //SINCRONICO, NO ESPERO EL CALLBACK, DALE QUE ES TARTDE
+            success: function(data) {
                 for (var i = 0; i < data.length; i++) {
                     alert("test " + data[i].name);
                     /*var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
