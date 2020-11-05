@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (username == data[i].email) {
                         if (password == data[i].password) {
-                            alert("hola");
+                            alert(data[i].name + " " + data[i].last_name);
                         }
                     }
                     /*var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
