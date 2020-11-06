@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             type: "GET",
             dataType: 'json',
             async: false,
-            data: { field1: username },
+            // data: { field1: username },
             success: function(data) {
                 if (data.length > 0) {
                     alert(data.name);
