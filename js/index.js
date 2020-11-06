@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 } else {
                     alert("ok");
-                    alert(data.name);
+                    alert(data["name"]);
                 }
 
 
