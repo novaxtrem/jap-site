@@ -26,6 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     alert("ok");
                     alert(data["name"]);
+                    alert(data.id);
+                    alert(data.last_name);
+                    var obj = JSON.parse(data);
+                    alert(obj.email);
                 }
 
 
