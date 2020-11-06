@@ -10,6 +10,9 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 const AVATAR_IMG_AND_SOME_MORE_DATA = "https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/4";
 const PRELOADED_ARTICLE_JSON = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 //
+//CUSTOM EXTERNAL SERVER WITH PHP
+const GET_ALL_USER_PHP_RESPONSE_JSON_LINK = "https://jap-site.000webhostapp.com/consulta.php";
+
 var BUY_SUCCESS_MSG = "";
 
 document.addEventListener("DOMContentLoaded", function(e) {
