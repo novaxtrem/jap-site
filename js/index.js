@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert(data[0].last_name);
                     var decodedString = atob(data[0].image_profile);
 
-                    alert("<img src=" + decodedString + ">");
                     window.location.replace("mainPage.html");
 
 
