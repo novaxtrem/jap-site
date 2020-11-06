@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     alert(data[0].id);
                     alert(data[0].last_name);
-                    var decodedString = atob(data[0].image_profile);
+                    //   var decodedString = atob(data[0].image_profile);
 
-                    window.location.replace("mainPage.html");
+                    // window.location.replace("mainPage.html");
 
 
                     /*
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                         var encodedString = btoa(string);
                                         console.log(encodedString); // Outputs: "SGVsbG8gV29ybGQh"
                     */
-                    console.log(decodedString);
+                    //  console.log(decodedString);
 
                 }
 
