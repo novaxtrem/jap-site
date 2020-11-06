@@ -16,28 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
             async: false,
             data: { field1: username },
             success: function(data) {
-                for (var i = 0; i < data.length; i++) {
 
-                    /* if (username == data[i].email) {
-                         if (password == data[i].password) {
-                             alert(data[i].name + " " + data[i].last_name);
-                             //
-                             localStorage.setItem('NOMBRE', data[i].name);
-                             localStorage.setItem('APELLIDO', data[i].last_name);
-                             localStorage.setItem('USER_EMAIL', username);
-                             localStorage.setItem('TELEFONO', data[i].phone_num);
-                             localStorage.setItem('EDAD', data[i].age);
-                             //
-                             localStorage.setItem("USER_PROFILE_IMG", "https://image.flaticon.com/icons/svg/244/244341.svg");
-                             window.location.href = "mainPage.html";
-                         }
-                     }
-                     */
-                    /*var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
-                    articleList.push(newArticle); //AGREGO EL OBJETO AL ARRAYLIST
-                    */
-
+                if (data.length > 0) {
+                    alert(data.name);
                 }
+                // for (var i = 0; i < data.length; i++) {
+
+                /* if (username == data[i].email) {
+                     if (password == data[i].password) {
+                         alert(data[i].name + " " + data[i].last_name);
+                         //
+                         localStorage.setItem('NOMBRE', data[i].name);
+                         localStorage.setItem('APELLIDO', data[i].last_name);
+                         localStorage.setItem('USER_EMAIL', username);
+                         localStorage.setItem('TELEFONO', data[i].phone_num);
+                         localStorage.setItem('EDAD', data[i].age);
+                         //
+                         localStorage.setItem("USER_PROFILE_IMG", "https://image.flaticon.com/icons/svg/244/244341.svg");
+                         window.location.href = "mainPage.html";
+                     }
+                 }
+                 */
+                /*var newArticle = new Article(data.articles[i].name, data.articles[i].count, data.articles[i].unitCost, data.articles[i].currency, data.articles[i].src); //CREO EL OBJETO
+                articleList.push(newArticle); //AGREGO EL OBJETO AL ARRAYLIST
+                */
+
+                //  }
             }
         });
         /*
