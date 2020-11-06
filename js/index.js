@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
             async: false,
             // data: { field1: username },
             success: function(data) {
-                if (data.hasOwnProperty('id')) {
+                json = JSON.parse(data);
+                if (json.hasOwnProperty('id')) {
                     alert("gola");
 
 
