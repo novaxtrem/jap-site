@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return $.ajax({
             url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK + "?username=" + username + "&password=" + password, //I MAKE MY OWN RULES; ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
-            type: "GET",
+            type: "GET", // SENDING A USER AND PASSWORD WITHOUT HASH...SAVING A IMAGE ON A DB ON BASE64...OUTSTANDING (SARCASTIC)
             dataType: 'json',
             async: false,
             // data: { field1: username },
@@ -24,6 +24,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert(data[0].id);
                     alert(data[0].last_name);
                     window.location.replace("mainPage.html");
+                    var decodedString = atob(data[0].image_profile);
+
+                    alert("<img src=" + decodedString + ">");
+
+                    /*
+                                        // Encode the String
+                                        var encodedString = btoa(string);
+                                        console.log(encodedString); // Outputs: "SGVsbG8gV29ybGQh"
+                    */
+                    console.log(decodedString); // Outputs: "Hello World!"
 
                 }
 
