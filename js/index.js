@@ -18,15 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
             success: function(data) {
 
                 if (!$.trim(data)) {
-                    alert("Error con el usuario");
-
-
-
-
+                    alert("Error con el usuario y/o la contraseña");
                 } else {
 
                     alert(data[0].id);
                     alert(data[0].last_name);
+                    window.location.replace("mainPage.html");
 
                 }
 
