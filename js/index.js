@@ -10,14 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = loginForm.pass.value;
 
         return $.ajax({
-            url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK, //I MAKE MY OWN RULES; ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
+            url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK + "?username=" + username, //I MAKE MY OWN RULES; ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
             type: "GET",
             dataType: 'json',
             async: false,
             data: { field1: username },
-            alert(data.length);
             success: function(data) {
-
                 if (data.length > 0) {
                     alert(data.name);
                 }
