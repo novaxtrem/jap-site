@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             async: false,
             data: { field1: username },
             success: function(data) {
-
+                alert(data.length);
                 if (data.length > 0) {
                     alert(data.name);
                 }
