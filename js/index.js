@@ -17,14 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // data: { field1: username },
             success: function(data) {
 
-                if (!data == "") {
-                    alert("gola");
+                if (!$.trim(data)) {
+                    alert("blanco");
 
 
 
 
                 } else {
-                    alert("nop");
+                    alert("ok");
                 }
 
 
