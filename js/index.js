@@ -29,4 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     })
+
+    $("#btn-registrar-usuario").click(function() {
+        alert("sdasd");
+    });
+
 });
