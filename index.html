@@ -52,8 +52,8 @@
                                         <label for="pass">Contraseña</label>
                                     </div>
                                     <button id="login-form-submit-button" class="btn btn-rounded btn-elegant btn-block btn-login text-uppercase font-weight-bold mb-2">ingresar<i class="fas fas fa-sign-in-alt pl-1"></i></button>
-
-                                    <button type="button" data-onsuccess="onSignIn" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
+                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                                    <button type="button" data-onsuccess="onSignIn" class="g-signin2 btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
                                     <script>
                                         function onSignIn(googleUser) {
                                             // Useful data for your client-side scripts:
@@ -114,7 +114,12 @@
                     <div class="md-form mb-5">
                         <i class="fas fa-user prefix grey-text"></i>
                         <input type="text" id="orangeForm-name" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+                        <label data-error="wrong" data-success="right" for="orangeForm-name">Nombre</label>
+                    </div>
+                    <div class="md-form mb-5">
+                        <i class="fas fa-user prefix grey-text"></i>
+                        <input type="text" id="orangeForm-last-name" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="orangeForm-last-name">Apellido</label>
                     </div>
                     <div class="md-form mb-5">
                         <i class="fas fa-envelope prefix grey-text"></i>
