@@ -44,7 +44,7 @@
                                 <h3 class="login-heading mb-4"><img src="img/logo_mati.svg" class="logo"></h3>
                                 <form id="login-form">
                                     <div class="form-label-group">
-                                        <input type="email" id="userEmail" class="form-control" placeholder="correo electronico" required autofocus>
+                                        <input type="email" id="userEmail" class="form-control validate" placeholder="correo electronico" required autofocus>
                                         <label for="userEmail">Correo Electronico</label>
                                     </div>
                                     <div class="form-label-group">
@@ -52,6 +52,9 @@
                                         <label for="pass">Contraseña</label>
                                     </div>
                                     <button id="login-form-submit-button" class="btn btn-rounded btn-elegant btn-block btn-login text-uppercase font-weight-bold mb-2">ingresar<i class="fas fas fa-sign-in-alt pl-1"></i></button>
+                                    <button id="login-form-submit-button" type="button" class="btn btn-white btn-rounded z-depth-1a"><i class="fab fa-google-plus-g"></i></button>
+
+
                                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                                     <script>
                                         function onSignIn(googleUser) {
@@ -101,12 +104,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body mx-3">
+                    <div class="md-form mb-5">
+                        <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg" alt="avatar" class="rounded-circle img-responsive rounded mx-auto d-block img-thumbnail">
+                    </div>
                     <div class="md-form mb-5">
                         <i class="fas fa-user prefix grey-text"></i>
                         <input type="text" id="orangeForm-name" class="form-control validate">
@@ -117,13 +123,11 @@
                         <input type="email" id="orangeForm-email" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
                     </div>
-
                     <div class="md-form mb-4">
                         <i class="fas fa-lock prefix grey-text"></i>
                         <input type="password" id="orangeForm-pass" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
                     </div>
-
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-elegant">Sign up</button>
