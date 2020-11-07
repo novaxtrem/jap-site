@@ -2,20 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.clear();
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
-    //  const loginWithGoogle = document.getElementById("google-login-button");
-
     //
-
-    //
-
-
-
-
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
         const username = loginForm.userEmail.value;
         const password = loginForm.pass.value;
-
+        //
         return $.ajax({
             url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK + "?username=" + username + "&password=" + password, //ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
             type: "GET", // SENDING A USER AND PASSWORD WITHOUT HASH AND WITH GET METHOD, OUTSTANDING (SARCASTIC)
