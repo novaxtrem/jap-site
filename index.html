@@ -13,63 +13,152 @@
     <!-- JAVASCRIPT CUSTOM -->
     <script src="js/index.js"></script>
     <!-- HOJAS DE ESTILO EXTERNAS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!-- HOJA DE ESTILO PROPIA -->
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css">
+
 </head>
 
 <body>
-    <div id="main-login-div">
-        <div id="inner-login-div">
-            <div>
-                <!--LIBRERIA DE ICONOS-->
-                <img src="https://img.icons8.com/color/100/000000/login-as-user.png" />
+
+
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+            <div class="col-md-8 col-lg-6">
+                <div class="login d-flex align-items-center py-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9 col-lg-8 mx-auto">
+                                <h3 class="login-heading mb-4"><img src="img/logo_mati.svg" class="logo"></h3>
+                                <form id="login-form">
+                                    <div class="form-label-group">
+                                        <input type="email" id="userEmail" class="form-control" placeholder="correo electronico" required autofocus>
+                                        <label for="userEmail">Correo Electronico</label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <input type="password" id="pass" class="form-control" placeholder="Contraseña" required>
+                                        <label for="pass">Contraseña</label>
+                                    </div>
+
+
+                                    <button id="login-form-submit-button" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">ingresar</button>
+                                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                                    <script>
+                                        function onSignIn(googleUser) {
+                                            // Useful data for your client-side scripts:
+                                            var profile = googleUser.getBasicProfile();
+                                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                                            console.log('Full Name: ' + profile.getName());
+                                            console.log('Given Name: ' + profile.getGivenName());
+                                            console.log('Family Name: ' + profile.getFamilyName());
+                                            console.log("Image URL: " + profile.getImageUrl());
+                                            console.log("Email: " + profile.getEmail());
+
+                                            // The ID token you need to pass to your backend:
+                                            var id_token = googleUser.getAuthResponse().id_token;
+                                            console.log("ID Token: " + id_token);
+                                            redirect(profile);
+                                        }
+
+                                        function redirect(profile) {
+                                            if (profile.getId() == "") {
+                                                alert("error")
+                                            } else {
+                                                localStorage.setItem('NOMBRE', profile.getGivenName());
+                                                localStorage.setItem('APELLIDO', profile.getFamilyName());
+                                                localStorage.setItem('USER_EMAIL', profile.getEmail());
+                                                localStorage.setItem('TELEFONO', "");
+                                                localStorage.setItem('EDAD', "");
+                                                localStorage.setItem("USER_PROFILE_IMG", profile.getImageUrl());
+                                                //
+                                                alert('User : ' + localStorage.getItem('NOMBRE') + " " + localStorage.getItem('APELLIDO'));
+                                                autenticado = true;
+                                                window.location.href = "mainPage.html";
+                                            }
+                                        }
+                                    </script>
+                                    <div class="text-center">
+                                        <a class="small" href="#">Forgot password?</a></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Login Form -->
-            <form id="login-form">
-                <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="correo electronico">
-                <br>
-                <input type="password" class="form-control" id="pass" placeholder="contraseña">
-                <br>
-                <input type="submit" id="login-form-submit-button" value="iniciar sesion" class="btn btn-success">
-                <br>
-                <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-                <script>
-                    function onSignIn(googleUser) {
-                        // Useful data for your client-side scripts:
-                        var profile = googleUser.getBasicProfile();
-                        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-                        console.log('Full Name: ' + profile.getName());
-                        console.log('Given Name: ' + profile.getGivenName());
-                        console.log('Family Name: ' + profile.getFamilyName());
-                        console.log("Image URL: " + profile.getImageUrl());
-                        console.log("Email: " + profile.getEmail());
-
-                        // The ID token you need to pass to your backend:
-                        var id_token = googleUser.getAuthResponse().id_token;
-                        console.log("ID Token: " + id_token);
-                        redirect(profile);
-                    }
-
-                    function redirect(profile) {
-                        if (profile.getId() == "") {
-                            alert("error")
-                        } else {
-                            localStorage.setItem('NOMBRE', profile.getGivenName());
-                            localStorage.setItem('APELLIDO', profile.getFamilyName());
-                            localStorage.setItem('USER_EMAIL', profile.getEmail());
-                            localStorage.setItem('TELEFONO', "");
-                            localStorage.setItem('EDAD', "");
-                            localStorage.setItem("USER_PROFILE_IMG", profile.getImageUrl());
-                            //
-                            alert('User : ' + localStorage.getItem('NOMBRE') + " " + localStorage.getItem('APELLIDO'));
-                            autenticado = true;
-                            window.location.href = "mainPage.html";
-                        }
-                    }
-                </script>
-            </form>
         </div>
+    </div>
+
+
+
+
+
+    <div class="row no-gutters">
+        <div class="col no-gutters">
+
+            <div class="leftside">
+
+
+
+
+                <!-- Login Form -->
+                <form id="login-form">
+                    <input type="email" class="form-control" id="userEmail" placeholder="correo electronico">
+                    <br>
+                    <input type="password" class="form-control" id="pass" placeholder="contraseña">
+                    <br>
+                    <input type="submit" id="login-form-submit-button" value="iniciar sesion" class="btn btn-success">
+                    <br>
+                    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    <script>
+                        function onSignIn(googleUser) {
+                            // Useful data for your client-side scripts:
+                            var profile = googleUser.getBasicProfile();
+                            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                            console.log('Full Name: ' + profile.getName());
+                            console.log('Given Name: ' + profile.getGivenName());
+                            console.log('Family Name: ' + profile.getFamilyName());
+                            console.log("Image URL: " + profile.getImageUrl());
+                            console.log("Email: " + profile.getEmail());
+
+                            // The ID token you need to pass to your backend:
+                            var id_token = googleUser.getAuthResponse().id_token;
+                            console.log("ID Token: " + id_token);
+                            redirect(profile);
+                        }
+
+                        function redirect(profile) {
+                            if (profile.getId() == "") {
+                                alert("error")
+                            } else {
+                                localStorage.setItem('NOMBRE', profile.getGivenName());
+                                localStorage.setItem('APELLIDO', profile.getFamilyName());
+                                localStorage.setItem('USER_EMAIL', profile.getEmail());
+                                localStorage.setItem('TELEFONO', "");
+                                localStorage.setItem('EDAD', "");
+                                localStorage.setItem("USER_PROFILE_IMG", profile.getImageUrl());
+                                //
+                                alert('User : ' + localStorage.getItem('NOMBRE') + " " + localStorage.getItem('APELLIDO'));
+                                autenticado = true;
+                                window.location.href = "mainPage.html";
+                            }
+                        }
+                    </script>
+                </form>
+
+            </div>
+            <div class="col no-gutters">
+
+                <div class="rightside"></div>
+            </div>
+        </div>
+
+
+
+
+
+
     </div>
 </body>
 
