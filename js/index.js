@@ -4,6 +4,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginButton = document.getElementById("login-form-submit-button");
     //  const loginWithGoogle = document.getElementById("google-login-button");
 
+    //
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+        redirect(profile);
+    }
+
+    function redirect(profile) {
+        if (profile.getId() == "") {
+            alert("error")
+        } else {
+            localStorage.setItem('NOMBRE', profile.getGivenName());
+            localStorage.setItem('APELLIDO', profile.getFamilyName());
+            localStorage.setItem('USER_EMAIL', profile.getEmail());
+            localStorage.setItem('TELEFONO', "");
+            localStorage.setItem('EDAD', "");
+            localStorage.setItem("USER_PROFILE_IMG", profile.getImageUrl());
+            //
+            alert('User : ' + localStorage.getItem('NOMBRE') + " " + localStorage.getItem('APELLIDO'));
+            autenticado = true;
+            window.location.href = "mainPage.html";
+        }
+    }
+    //
+
+
+
+
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
         const username = loginForm.userEmail.value;
