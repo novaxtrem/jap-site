@@ -9,14 +9,27 @@
     <meta name="google-signin-client_id" content="868781423348-pce7300dti95vk59k716i8l5c90k7dsd.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/init.js"></script>
-    <!-- JAVASCRIPT CUSTOM -->
+    <!-- CUSTOM DATA -->
     <script src="js/index.js"></script>
-    <!-- HOJAS DE ESTILO EXTERNAS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- HOJA DE ESTILO PROPIA -->
+    <script src="js/init.js"></script>
     <link rel="stylesheet" href="css/index.css">
-
+    <!-- EXTERNAL DATA-->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +56,9 @@
                                     </div>
 
 
-                                    <button id="login-form-submit-button" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">ingresar</button>
+                                    <button id="login-form-submit-button" class="btn btn-rounded btn-elegant btn-block btn-login text-uppercase font-weight-bold mb-2">ingresar<i class="fas fas fa-sign-in-alt pl-1"></i></button>
+
+
                                     <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                                     <script>
                                         function onSignIn(googleUser) {
