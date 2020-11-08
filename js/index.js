@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         localStorage.setItem('TELEFONO', data[0].phone_num);
                         localStorage.setItem('EDAD', data[0].age);
                         //
-                        //localStorage.setItem("USER_PROFILE_IMG", atob(data[0].image_profile));
+                        localStorage.setItem("USER_PROFILE_IMG", atob(data[0].image_profile));
                         //
                         window.location.href = "mainPage.html";
                     }
