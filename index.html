@@ -101,19 +101,12 @@
     <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Registro</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="btn-registrar-usuario" method="post" enctype="multipart/form-data">
+                <form id="form-registrar-usuario" method="post" enctype="multipart/form-data">
                     <div class="modal-body mx-3">
                         <div class="md-form mb-5">
                             <div class="avatar-upload">
                                 <div class="avatar-edit">
                                     <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg">
-
                                     <label for="imageUpload"></label>
                                 </div>
                                 <div class="avatar-preview">
@@ -152,16 +145,12 @@
                             <input type="password" id="orangeForm-pass" class="form-control validate">
                             <label data-error="wrong" data-success="right" for="orangeForm-pass">Contraseña</label>
                         </div>
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button id="btnRegistrar" type="submit" class="btn btn-elegant">Sign up</button>
+                        <div class="d-flex justify-content-center "> <button id="btnRegistrar" type="submit" class="btn btn-elegant">registrame!</button></div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div id="test"></div>
-
 </body>
 
 </html>

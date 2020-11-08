@@ -40,10 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 $('#imagePreview').hide();
                 $('#imagePreview').fadeIn(650);
                 userImageProfile = e.target.result;
-
-
-                document.getElementById('test').innerHTML = `<img src="` + e.target.result + `" />'`;
-
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -53,26 +49,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    function validateEmail(email) {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+    }
+
     $("#btnRegistrar").click(function() {
 
-        var nameSender = "Mati";
-        var last_nameSender = "V";
-        var ageSender = "29";
+        var nameSender = $("#orangeForm-name").val();
+        var last_nameSender = $("#orangeForm-last-name").val();
+        var ageSender = $("#orangeForm-age").val();
         var imageProfileSender = userImageProfile;
-        var phoneNumSender = "545211";
-        var emailSender = "w33ewqghghail.eeee";
-        var passwordSender = "147";
+        var phoneNumSender = $("#orangeForm-phone").val();
+        var emailSender = $("#orangeForm-email").val();
+        var passwordSender = $("#orangeForm-pass").val();
 
-        console.log('starting ajax');
-        $.ajax({
-            url: "https://jap-site.000webhostapp.com/insert.php?",
-            type: "post",
-            data: { name: nameSender, last_name: last_nameSender, age: ageSender, image_profile: imageProfileSender, phone_num: phoneNumSender, email: emailSender, password: passwordSender },
-            success: function(data) {
-                var dataParsed = JSON.parse(data);
-
+        if ((nameSender || last_nameSender || ageSender || phoneNumSender || emailSender || passwordSender) == "") {
+            alert("todos los campos son requeridos");
+        } else {
+            var valido = false;
+            valido = validateEmail(emailSender);
+            if (valido == true) {
+                console.log('starting ajax');
+                $.ajax({
+                    url: "https://jap-site.000webhostapp.com/insert.php?",
+                    type: "post",
+                    data: { name: nameSender, last_name: last_nameSender, age: ageSender, image_profile: imageProfileSender, phone_num: phoneNumSender, email: emailSender, password: passwordSender },
+                    success: function(data) {
+                        var dataParsed = JSON.parse(data);
+                        alert("usuario registrado correctamente");
+                        //$("#omodalRegisterForm").modal('hide');
+                    }
+                });
             }
-        });
+
+        }
+
+
 
     });
 
