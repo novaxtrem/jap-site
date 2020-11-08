@@ -12,7 +12,8 @@ const PRELOADED_ARTICLE_JSON = "https://japdevdep.github.io/ecommerce-api/cart/6
 //
 //CUSTOM EXTERNAL SERVER WITH PHP
 const GET_ALL_USER_PHP_RESPONSE_JSON_LINK = "https://jap-site.000webhostapp.com/consulta.php";
-const SCRIPT_TO_UPLOAD_FILES = "https://jap-site.000webhostapp.com/upload.php";
+const SCRIPT_TO_UPLOAD_FILES = "https://jap-site.000webhostapp.com/upload.php"; //NOT USED AT THE MOMENT
+const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?";
 
 var BUY_SUCCESS_MSG = "";
 

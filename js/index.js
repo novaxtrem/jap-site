@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem('USER_EMAIL', username);
                     localStorage.setItem('TELEFONO', data[0].phone_num);
                     localStorage.setItem('EDAD', data[0].age);
-                    localStorage.setItem("USER_PROFILE_IMG", "https://image.flaticon.com/icons/svg/244/244341.svg");
+                    localStorage.setItem("USER_PROFILE_IMG", data[0].image_profile);
                     //
                     window.location.href = "mainPage.html";
                 }
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (valido == true) {
                 console.log('starting ajax');
                 $.ajax({
-                    url: "https://jap-site.000webhostapp.com/insert.php?",
+                    url: INSERT_USER_SCRIP_POST,
                     type: "post",
                     data: { name: nameSender, last_name: last_nameSender, age: ageSender, image_profile: imageProfileSender, phone_num: phoneNumSender, email: emailSender, password: passwordSender },
                     success: function(data) {
@@ -89,6 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
                             $('#modalRegisterForm').modal("hide");
                         }, 1500);
                         //
+                        $("#orangeForm-name").val() = "";
+                        $("#orangeForm-last-name").val() = "";
+                        $("#orangeForm-age").val() = "";
+                        userImageProfile = "";
+                        $("#orangeForm-phone").val() = "";
+                        $("#orangeForm-email").val() = "";
+                        $("#orangeForm-pass").val() = "";
                     }
                 });
             }

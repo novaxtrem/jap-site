@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 
-    $('#test1').click(function() {
-
-
-    });
-
-
-
     var htmlContentToAppend = "";
     htmlContentToAppend += `<div class="row">
         <div class="col-md-4 border-right">
