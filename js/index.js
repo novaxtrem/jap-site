@@ -1,7 +1,20 @@
 var userImageProfile = "";
 
 document.addEventListener("DOMContentLoaded", () => {
+
     localStorage.clear();
+    //
+    $("#form-registrar-usuario").submit(function(e) { //EVITO EL REFRESCO DE LA MODAL
+        e.preventDefault();
+    });
+    $("#login-form").submit(function(e) { //EVITO EL REFRESCO
+        e.preventDefault();
+    });
+    //
+
+
+
+
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
     //
@@ -10,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = loginForm.userEmail.value;
         const password = loginForm.pass.value;
         //
-        return $.ajax({
+        $.ajax({
             url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK + "?username=" + username + "&password=" + password, //ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
             type: "GET", // SENDING A USER AND PASSWORD WITHOUT HASH AND WITH GET METHOD, OUTSTANDING (SARCASTIC)
             dataType: 'json',
@@ -19,14 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!$.trim(data)) {
                     alert("Error con el usuario y/o la contraseña");
                 } else {
-                    localStorage.setItem('NOMBRE', data[0].name);
-                    localStorage.setItem('APELLIDO', data[0].last_name);
-                    localStorage.setItem('USER_EMAIL', username);
-                    localStorage.setItem('TELEFONO', data[0].phone_num);
-                    localStorage.setItem('EDAD', data[0].age);
-                    localStorage.setItem("USER_PROFILE_IMG", data[0].image_profile);
-                    //
-                    window.location.href = "mainPage.html";
+                    if (!data[0].name == "") {
+                        alert(data[0].name)
+                        localStorage.setItem('NOMBRE', data[0].name);
+                        localStorage.setItem('APELLIDO', data[0].last_name);
+                        localStorage.setItem('USER_EMAIL', username);
+                        localStorage.setItem('TELEFONO', data[0].phone_num);
+                        localStorage.setItem('EDAD', data[0].age);
+                        //
+                        //localStorage.setItem("USER_PROFILE_IMG", atob(data[0].image_profile));
+                        //
+                        window.location.href = "mainPage.html";
+                    }
                 }
             }
         });
@@ -54,9 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return re.test(email);
     }
 
-    $("#form-registrar-usuario").submit(function(e) { //EVITO EL REFRESCO DE LA MODAL
-        e.preventDefault();
-    });
+
+
 
     $("#btnRegistrar").click(function() {
 
