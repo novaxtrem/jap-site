@@ -51,18 +51,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     $("#btnRegistrar").click(function() {
-        var name2 = $('#name').val();
-        var email2 = $('#email').val();
-        var password2 = $('#password').val();
-        var gender2 = $('#gender').val();
+
+        var nameSender = "Mati";
+        var last_nameSender = "V";
+        var ageSender = "29";
+        var imageProfileSender = "saff";
+        var phoneNumSender = "545211";
+        var emailSender = "nova@mail.eeee";
+        var passwordSender = "147";
+
         console.log('starting ajax');
         $.ajax({
-            url: "./insert.php",
+            url: "https://jap-site.000webhostapp.com/insert.php?",
             type: "post",
-            data: { name: name2, email: email2, password: password2, gender: gender2 },
+            data: { name: nameSender, last_name: last_nameSender, age: ageSender, image_profile: imageProfileSender, phone_num: phoneNumSender, email: emailSender, password: passwordSender },
             success: function(data) {
                 var dataParsed = JSON.parse(data);
-                console.log(dataParsed);
+
             }
         });
 
