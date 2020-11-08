@@ -8,9 +8,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 <div class="avatar-upload">
                     <div class="avatar-edit">
                         <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg">
-                        <label for="imageUpload"></label>
+                        <label for="imageUpload">
+                            <a class="btn-floating btn-sm transparent">
+                                <i class="fas fa-camera" style="color:white"></i>
+                            </a>
+                        </label>
                     </div>
-                    <div class="avatar-preview" ">
+                    <div class="avatar-preview">
                         <div id="imagePreview" style="background-image: url('` + localStorage.getItem("USER_PROFILE_IMG") + `'); margin-bottom:10%;">
                         </div>
                         <span class="font-weight-bold">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</span>
@@ -65,12 +69,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {
+                showSpinner();
                 $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
                 $('#imagePreview').hide();
                 $('#imagePreview').fadeIn(650);
                 userImageProfile = e.target.result;
+                localStorage.setItem("USER_PROFILE_IMG", "");
                 localStorage.setItem("USER_PROFILE_IMG", userImageProfile);
-                console.log(userImageProfile);
+                hideSpinner();
             }
             reader.readAsDataURL(input.files[0]);
         }
@@ -93,12 +99,14 @@ document.addEventListener("DOMContentLoaded", function(e) {
             alert("todos los campos son requeridos");
         } else {
             console.log('starting ajax');
+            showSpinner();
             $.ajax({
                 url: UPDATE_USER_SCRIPT_POST,
                 type: "post",
                 data: { name: nameSender, last_name: last_nameSender, age: ageSender, image_profile: imageProfileSender, phone_num: phoneNumSender, email: emailSender, password: passwordSender },
                 success: function(data) {
                     if (guardoDatosLocalStorange(data)) {
+                        hideSpinner();
                         location.reload();
                     } else {
                         alert("ah ocurrido un problema");

@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
             });
     }
 
-    var showSpinner = function() {
+    showSpinner = function() {
         if ($("#spinner-wrapper").length > 0) { //CONTROL DE NULL, POR LAS DUDAS
             document.getElementById("spinner-wrapper").style.display = "block";
         }
     }
-    var hideSpinner = function() {
+    hideSpinner = function() {
         if ($("#spinner-wrapper").length > 0) { //CONTROL DE NULL, POR LAS DUDAS
             document.getElementById("spinner-wrapper").style.display = "none";
         }
