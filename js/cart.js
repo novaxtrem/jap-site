@@ -4,19 +4,6 @@ let articleList = [];
 var moneda;
 const cotizacion = 40;
 var existenElementos = false;
-//SHOW ME YOUR KUNG FU
-class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
-    constructor(name, count, unitCost, currency, src) {
-        this.name = name;
-        this.count = count;
-        this.unitCost = unitCost;
-        this.currency = currency;
-        this.src = src;
-    }
-    dameDatos() {
-        console.log(this.name + " " + this.count + " " + this.unitCost + " " + this.currency + " " + this.src)
-    }
-}
 
 function cargoArrayArticulos() { //CARGO MI ARRAYLIST CON LA INFORMACION DEL JSON
     return $.ajax({

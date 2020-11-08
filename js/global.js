@@ -6,6 +6,30 @@ if (localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USE
     autenticado = true;
 }
 
+class Usuario {
+    constructor(nombre, apellido, edad, email, telefono, contraseña) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.email = email;
+        this.telefono = telefono;
+        this.contraseña = contraseña;
+    }
+}
+//SHOW ME YOUR KUNG FU
+class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
+    constructor(name, count, unitCost, currency, src) {
+        this.name = name;
+        this.count = count;
+        this.unitCost = unitCost;
+        this.currency = currency;
+        this.src = src;
+    }
+    dameDatos() {
+        console.log(this.name + " " + this.count + " " + this.unitCost + " " + this.currency + " " + this.src)
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     var htmlContentToAppend = "";
     if ($('#mainNav').length > 0 && !(localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USER_EMAIL") == null || localStorage.getItem("USER_EMAIL") == "")) {
