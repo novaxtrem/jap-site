@@ -18,29 +18,22 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
-        const username = loginForm.userEmail.value;
-        const password = loginForm.pass.value;
-        //
+        const emailSender = loginForm.userEmail.value;
+        const passwordSender = loginForm.pass.value;
         $.ajax({
-            url: GET_ALL_USER_PHP_RESPONSE_JSON_LINK + "?username=" + username + "&password=" + password, //ONLINE FREE HOSTING WITH PHP + EXTERNAL REMOTE DB (FREE ALSO)
-            type: "GET", // SENDING A USER AND PASSWORD WITHOUT HASH AND WITH GET METHOD, OUTSTANDING (SARCASTIC)
-            dataType: 'json',
-            async: false,
+            url: SELECT_USER_SCRIPT_POST,
+            type: "post",
+            data: { email: emailSender, password: passwordSender },
             success: function(data) {
                 if (!$.trim(data)) {
                     alert("Error con el usuario y/o la contraseña");
                 } else {
-                    if (!data[0].name == "") {
-                        alert(data[0].name)
-                        localStorage.setItem('NOMBRE', data[0].name);
-                        localStorage.setItem('APELLIDO', data[0].last_name);
-                        localStorage.setItem('USER_EMAIL', username);
-                        localStorage.setItem('TELEFONO', data[0].phone_num);
-                        localStorage.setItem('EDAD', data[0].age);
-                        //
-                        localStorage.setItem("USER_PROFILE_IMG", (data[0].image_profile));
-                        //
-                        window.location.href = "mainPage.html";
+                    if (!data == "") {
+                        if (guardoDatosLocalStorange(data)) {
+                            location.href = "mainPage.html";
+                        } else {
+                            alert("ah ocurrido un problema");
+                        }
                     }
                 }
             }
