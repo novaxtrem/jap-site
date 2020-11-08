@@ -54,6 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return re.test(email);
     }
 
+    $("#form-registrar-usuario").submit(function(e) { //EVITO EL REFRESCO DE LA MODAL
+        e.preventDefault();
+    });
+
     $("#btnRegistrar").click(function() {
 
         var nameSender = $("#orangeForm-name").val();
@@ -63,12 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
         var phoneNumSender = $("#orangeForm-phone").val();
         var emailSender = $("#orangeForm-email").val();
         var passwordSender = $("#orangeForm-pass").val();
-
+        //
         if ((nameSender || last_nameSender || ageSender || phoneNumSender || emailSender || passwordSender) == "") {
             alert("todos los campos son requeridos");
         } else {
             var valido = false;
             valido = validateEmail(emailSender);
+            alert(valido);
             if (valido == true) {
                 console.log('starting ajax');
                 $.ajax({
@@ -78,15 +83,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     success: function(data) {
                         var dataParsed = JSON.parse(data);
                         alert("usuario registrado correctamente");
-                        //$("#omodalRegisterForm").modal('hide');
+                        //
+                        $('#modalRegisterForm').delay(1000).fadeOut(450);
+                        setTimeout(function() {
+                            $('#modalRegisterForm').modal("hide");
+                        }, 1500);
+                        //
                     }
                 });
             }
-
         }
-
-
-
     });
 
 });
