@@ -31,4 +31,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         </div>
     </div>`;
     document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
+
+    $("#guardarCambios").click(function() {
+        alert("ds");
+    });
 });

@@ -11,9 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
     });
     //
-
-
-
+    $("#logo_mati").attr("href", CUSTOM_ABOUT_PAGE_WITH_SQL_AND_PHP_CODE);
 
     const loginForm = document.getElementById("login-form");
     const loginButton = document.getElementById("login-form-submit-button");
@@ -40,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         localStorage.setItem('TELEFONO', data[0].phone_num);
                         localStorage.setItem('EDAD', data[0].age);
                         //
-                        localStorage.setItem("USER_PROFILE_IMG", atob(data[0].image_profile));
+                        localStorage.setItem("USER_PROFILE_IMG", (data[0].image_profile));
                         //
                         window.location.href = "mainPage.html";
                     }
@@ -70,9 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
         var re = /\S+@\S+\.\S+/;
         return re.test(email);
     }
-
-
-
 
     $("#btnRegistrar").click(function() {
 

@@ -10,10 +10,12 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 const AVATAR_IMG_AND_SOME_MORE_DATA = "https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/4";
 const PRELOADED_ARTICLE_JSON = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 //
-//CUSTOM EXTERNAL SERVER WITH PHP
+//CUSTOM EXTERNAL SERVER WITH PHP - WEB NEED TO CHECK MYSQL INJECTION -> MAYBE LATER
+const CUSTOM_ABOUT_PAGE_WITH_SQL_AND_PHP_CODE = "https://jap-site.000webhostapp.com/";
 const GET_ALL_USER_PHP_RESPONSE_JSON_LINK = "https://jap-site.000webhostapp.com/consulta.php";
-const SCRIPT_TO_UPLOAD_FILES = "https://jap-site.000webhostapp.com/upload.php"; //NOT USED AT THE MOMENT
-const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?";
+const SCRIPT_TO_UPLOAD_FILES = "https://jap-site.000webhostapp.com/upload.php"; //NOT USED AT THE MOMENT, IMAGES WILL BE SAVED ON BASE64 STRING IN DB (BAD IKNOW), BUTS WORKS FINE
+const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?"; //INSERT
+const UPDATE_USER_SCRIPT_POST = "https://jap-site.000webhostapp.com/update.php?"; //UPDATE
 
 var BUY_SUCCESS_MSG = "";
 
