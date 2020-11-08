@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             var valido = false;
             valido = validateEmail(emailSender);
-            alert(valido);
             if (valido == true) {
                 console.log('starting ajax');
                 $.ajax({
