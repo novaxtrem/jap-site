@@ -5,7 +5,7 @@ if (localStorage.getItem("USER_EMAIL") == undefined || localStorage.getItem("USE
 } else {
     autenticado = true;
 }
-
+//SHOW ME YOUR KUNG FU
 class Usuario {
     constructor(nombre, apellido, edad, email, telefono, contraseña) {
         this.nombre = nombre;
@@ -16,7 +16,7 @@ class Usuario {
         this.contraseña = contraseña;
     }
 }
-//SHOW ME YOUR KUNG FU
+
 class Article { //CREO LA CLASE ARTICULOS CON SUS ATRIBUTOS, PORQUE SI
     constructor(name, count, unitCost, currency, src) {
         this.name = name;

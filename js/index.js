@@ -50,6 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    $("#btnRegistrar").click(function() {
+        var name2 = $('#name').val();
+        var email2 = $('#email').val();
+        var password2 = $('#password').val();
+        var gender2 = $('#gender').val();
+        console.log('starting ajax');
+        $.ajax({
+            url: "./insert.php",
+            type: "post",
+            data: { name: name2, email: email2, password: password2, gender: gender2 },
+            success: function(data) {
+                var dataParsed = JSON.parse(data);
+                console.log(dataParsed);
+            }
+        });
 
+    });
 
 });
