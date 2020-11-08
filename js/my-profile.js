@@ -1,24 +1,30 @@
 document.addEventListener("DOMContentLoaded", function(e) {
 
     var htmlContentToAppend = "";
-    htmlContentToAppend += `<div class="row">
+    htmlContentToAppend += `
+    <div class="row">
         <div class="col-md-4 border-right">
             <div name="profile-lateral-resume" class="d-flex flex-column align-items-center text-center p-3 py-5">
-                <img class="rounded-circle mt-5" src="` + localStorage.getItem("USER_PROFILE_IMG") + `" width="90">
-                <span class="font-weight-bold">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</span>
-                <h5 class="text-black-50">` + localStorage.getItem("USER_EMAIL") + `</h5>
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg">
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview" ">
+                        <div id="imagePreview" style="background-image: url('` + localStorage.getItem("USER_PROFILE_IMG") + `'); margin-bottom:10%;">
+                        </div>
+                        <span class="font-weight-bold">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</span>
+                        <h5 class="text-black-50">` + localStorage.getItem("USER_EMAIL") + `</h5>
+                    </div>
+                </div>
             </div>
         </div>
-
-
-
-
         <div class="col-md-8">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <div class="d-flex flex-row align-items-center back">
                         <i class="fa fa-long-arrow-left mr-1 mb-1"></i>
-                        <h6>Mi Perfil</h6>
+                        <h1>Mi Perfil</h1>
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -54,6 +60,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
         </div>
     </div>`;
     document.getElementById("main-profile-container").innerHTML = htmlContentToAppend;
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+                userImageProfile = e.target.result;
+                localStorage.setItem("USER_PROFILE_IMG", userImageProfile);
+                console.log(userImageProfile);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function() {
+        readURL(this);
+    });
 
     $("#guardarCambios").click(function() {
 
