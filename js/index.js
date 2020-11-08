@@ -1,3 +1,5 @@
+var userImageProfile = "";
+
 document.addEventListener("DOMContentLoaded", () => {
     localStorage.clear();
     const loginForm = document.getElementById("login-form");
@@ -37,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
                 $('#imagePreview').hide();
                 $('#imagePreview').fadeIn(650);
-                //console.log(e.target.result);
+                userImageProfile = e.target.result;
+
 
                 document.getElementById('test').innerHTML = `<img src="` + e.target.result + `" />'`;
 
@@ -55,9 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
         var nameSender = "Mati";
         var last_nameSender = "V";
         var ageSender = "29";
-        var imageProfileSender = "saff";
+        var imageProfileSender = userImageProfile;
         var phoneNumSender = "545211";
-        var emailSender = "nova@mail.eeee";
+        var emailSender = "w33ewqghghail.eeee";
         var passwordSender = "147";
 
         console.log('starting ajax');
