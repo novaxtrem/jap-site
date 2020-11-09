@@ -21,15 +21,18 @@
 #mainItemsContainer {
     float: left;
     overflow: auto;
+    border: 0;
 }
 
 #shippingAndPayment input {
     margin-bottom: 10px;
+    border: 0;
 }
 
 #mainContainer {
     margin: 0 5%;
     margin-top: 20px;
+    border: 0;
 }
 
 #credit-cards img,
@@ -37,4 +40,5 @@
     width: 55px;
     border-radius: 8px;
     margin-left: 5px;
+    border: 0;
 }

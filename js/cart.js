@@ -31,7 +31,7 @@ function dibujoArticulos() {
         }
         moneda = articleList[i].currency;
         htmlContentToAppend += `
-            <div class="border border-gainsboro p-3 clearfix item">
+            <div class="p-3 clearfix item">
                 <img src="` + articleList[i].src + `" width="80px">
                 <div class="col-lg-5 col-5 text-lg-left">
                     <h4>` + articleList[i].name + `<br>
