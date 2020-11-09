@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     <div name="input-apellido" class="col-md-6">
                         <input id="inputApellido" type="text" class="form-control" placeholder="Apellido" value="` + localStorage.getItem("APELLIDO") + `">
                     </div>
-            
                 </div>
                 <div class="row mt-3">
                     <div name="input-email" class="col-md-6">
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     <div  name="input-telefono" class="col-md-6">
                         <input id="inputTelefono" type="text" class="form-control" placeholder="Telefono" value="` + localStorage.getItem("TELEFONO") + `">
                     </div>
-                    
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-6">

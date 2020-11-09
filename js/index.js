@@ -18,13 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     //
     loginButton.addEventListener("click", (e) => {
         e.preventDefault();
+        showSpinner();
         const emailSender = loginForm.userEmail.value;
         const passwordSender = loginForm.pass.value;
+
         $.ajax({
             url: SELECT_USER_SCRIPT_POST,
             type: "post",
             data: { email: emailSender, password: passwordSender },
             success: function(data) {
+                hideSpinner();
                 if (!$.trim(data)) {
                     alert("Error con el usuario y/o la contraseña");
                 } else {
@@ -79,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             valido = validateEmail(emailSender);
             if (valido == true) {
                 console.log('starting ajax');
+                showSpinner();
                 $.ajax({
                     url: INSERT_USER_SCRIP_POST,
                     type: "post",
@@ -87,11 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         var dataParsed = JSON.parse(data);
                         alert("usuario registrado correctamente");
                         //
-                        $('#modalRegisterForm').delay(1000).fadeOut(450);
-                        setTimeout(function() {
-                            $('#modalRegisterForm').modal("hide");
-                        }, 1500);
-                        //
                         $("#orangeForm-name").val() = "";
                         $("#orangeForm-last-name").val() = "";
                         $("#orangeForm-age").val() = "";
@@ -99,9 +98,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         $("#orangeForm-phone").val() = "";
                         $("#orangeForm-email").val() = "";
                         $("#orangeForm-pass").val() = "";
+                        //
+                        $('#modalRegisterForm').delay(200).fadeOut(450);
+                        setTimeout(function() {
+                            $('#modalRegisterForm').modal("hide");
+                        }, 1500);
+                        //
+                        hideSpinner();
                     }
                 });
             }
+
         }
     });
 
