@@ -1,6 +1,5 @@
-alert("Gracias por tu visita");
 localStorage.clear();
-profile = null;
+profile = "";
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
