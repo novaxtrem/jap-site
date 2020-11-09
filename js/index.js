@@ -2,7 +2,7 @@ var userImageProfile = "";
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    localStorage.clear();
+
     //
     $("#form-registrar-usuario").submit(function(e) { //EVITO EL REFRESCO DE LA MODAL
         e.preventDefault();
