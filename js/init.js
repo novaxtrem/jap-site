@@ -1,21 +1,22 @@
-const CATEGORIES_URL = "https://japdevdep.github.io/ecommerce-api/category/all.json";
-const PUBLISH_PRODUCT_URL = "https://japdevdep.github.io/ecommerce-api/product/publish.json";
-const CATEGORY_INFO_URL = "https://japdevdep.github.io/ecommerce-api/category/1234.json";
-const PRODUCTS_URL = "https://japdevdep.github.io/ecommerce-api/product/all.json";
-const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678.json";
-const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
-const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
-const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 //CUSTOM DATA ORIGINS
+//WE CHANGE ALL DATA SOURCES TO MY SERVER BUT NOT SIMULATE DATABASE RESPONSE -> MAYBE NEXT TIME
+const CATEGORIES_URL = "https://jap-site.000webhostapp.com/json_responses/categories.json";
+const PUBLISH_PRODUCT_URL = "https://jap-site.000webhostapp.com/json_responses/publish.json";
+const CATEGORY_INFO_URL = "https://jap-site.000webhostapp.com/json_responses/1234.json";
+const PRODUCTS_URL = "https://jap-site.000webhostapp.com/json_responses/all.json";
+const PRODUCT_INFO_URL = "https://jap-site.000webhostapp.com/json_responses/5678.json";
+const PRODUCT_INFO_COMMENTS_URL = "https://jap-site.000webhostapp.com/json_responses/5678-comments.json";
+const CART_INFO_URL = "https://jap-site.000webhostapp.com/json_responses/987.json";
+const CART_BUY_URL = "https://jap-site.000webhostapp.com/json_responses/buy.json";
 const AVATAR_IMG_AND_SOME_MORE_DATA = "https://api.jsonbin.io/b/5f4ee062993a2e110d3c7a11/4";
-const PRELOADED_ARTICLE_JSON = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
+const PRELOADED_ARTICLE_JSON = "https://jap-site.000webhostapp.com/json_responses/654.json";
 //
 //CUSTOM EXTERNAL SERVER WITH PHP - WEB NEED TO CHECK MYSQL INJECTION -> MAYBE LATER
 const CUSTOM_ABOUT_PAGE_WITH_SQL_AND_PHP_CODE = "https://jap-site.000webhostapp.com/";
 //
 const SCRIPT_TO_UPLOAD_FILES = "https://jap-site.000webhostapp.com/upload.php"; //NOT USED AT THE MOMENT, IMAGES WILL BE SAVED ON BASE64 STRING IN DB (BAD IKNOW), BUTS WORKS FINE
 //
-const SELECT_USER_SCRIPT_POST = "https://jap-site.000webhostapp.com/select.php?";
+const SELECT_USER_SCRIPT_POST = "https://jap-site.000webhostapp.com/select.php?"; //SELECT
 const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?"; //INSERT
 const UPDATE_USER_SCRIPT_POST = "https://jap-site.000webhostapp.com/update.php?"; //UPDATE
 
