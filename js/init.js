@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     getJSONData = function(url) {
         var result = {};
         showSpinner();
-        return fetch(url)
+        return fetch(url, { mode: 'no-cors' })
             .then(response => {
                 if (response.ok) {
                     return response.json();
