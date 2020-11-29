@@ -4,6 +4,8 @@ let articleList = [];
 var moneda;
 const cotizacion = 40;
 var existenElementos = false;
+var productosCompradosSender;
+var totalSender = 0;
 
 function cargoArrayArticulos() { //CARGO MI ARRAYLIST CON LA INFORMACION DEL JSON
     return $.ajax({
@@ -33,9 +35,9 @@ function dibujoArticulos() {
         htmlContentToAppend += `
             <div class="p-3 clearfix item">
                 <img src="` + articleList[i].src + `" width="80px">
-                <div class="col-lg-5 col-5 text-lg-left">
-                    <h4>` + articleList[i].name + `<br>
-                        <h5>costo unitario: ` + articleList[i].unitCost + " " + articleList[i].currency + `</h5>
+                <div class="col-lg-5 col-5 text-lg-left product-name-and-unit-cost">
+                    <h4 class="product-name">` + articleList[i].name + `<br>
+                        <h5  class="product-unit-cost">costo unitario: ` + articleList[i].unitCost + " " + articleList[i].currency + `</h5>
                     </h4>
                 </div>
                 <div class="product-price d-none">` + articleList[i].unitCost + `</div>
@@ -56,14 +58,26 @@ function dibujoArticulos() {
 
 /* Recalculate cart */
 function recalculateCart() {
+    productosCompradosSender = "";
     var subtotal = 0;
     var costoEnvio = 0;
     var tipoEnvio = 0;
     var total = 0;
+
+    var nombreArticulo = "";
+    var costoUnitario = "";
+    var cantidadComprados = "";
+
     //
     existenElementos = false;
     $('.item').each(function() { //POR CADA UNA DE LAS "FILAS" (ELEMENTOS ITEMS) QUE ENCUENTRO DENTRO DEL HTML
         subtotal += parseFloat($(this).children('.product-line-price').text()); //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
+        //
+        nombreArticulo = $(this).children('.product-name-and-unit-cost').children(".product-name").text();
+        costoUnitario = $(this).children('.product-name-and-unit-cost').children(".product-unit-cost").text();
+        cantidadComprados = $(this).children('.pass-quantity input').val();
+        productosCompradosSender += nombreArticulo + " " + costoUnitario + " " + cantidadComprados + "\n";
+        //
         existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
     });
     //
@@ -83,6 +97,8 @@ function recalculateCart() {
         }
         $('.totals-value').fadeIn(fadeTime);
     });
+    totalSender = total;
+    console.log(productosCompradosSender + " " + totalSender);
 }
 
 /* Update quantity */
@@ -129,7 +145,17 @@ function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODO
     if (existenElementos == true) { //VALIDO QUE EXISTAN ELEMENTOS A COMPRAR, ESTO NO LO PIDE LA LETRA LO HAGO DE ONDA Y PORQUE ES UNA SOLA LINEA DE CODIGO
         if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
             if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
-                alert(BUY_SUCCESS_MSG.msg);
+
+                var emailSender = localStorage.getItem("USER_EMAIL");
+                $.ajax({
+                    url: INSERT_ORDEN_COMPRA_POST,
+                    type: "post",
+                    data: { email: emailSender, orden_compra: productosCompradosSender, total: totalSender },
+                    success: function(data) {
+                        var dataParsed = JSON.parse(data);
+                        alert(BUY_SUCCESS_MSG.msg);
+                    }
+                });
             } else {
                 alert("debe completar datos de medio de pago");
             }
