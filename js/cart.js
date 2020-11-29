@@ -75,7 +75,8 @@ function recalculateCart() {
         //
         nombreArticulo = $(this).children('.product-name-and-unit-cost').children(".product-name").text();
         costoUnitario = $(this).children('.product-name-and-unit-cost').children(".product-unit-cost").text();
-        cantidadComprados = $(this).children('.pass-quantity').val();
+        alert($(this).children('.pass-quantity input').val());
+        cantidadComprados = $(this).children('.pass-quantity input').val();
         productosCompradosSender += nombreArticulo + " " + costoUnitario + " " + cantidadComprados + "\n";
         //
         existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
