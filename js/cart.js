@@ -43,7 +43,7 @@ function dibujoArticulos() {
                 <div class="product-price d-none">` + articleList[i].unitCost + `</div>
                 <div class="pass-quantity col-lg-3">
                     <label for="pass-quantity" class="pass-quantity">Cantidad</label>
-                    <input class="form-control" type="number" value="` + articleList[i].count + `" min="1">
+                    <input class="form-control itemsComprados" type="number" value="` + articleList[i].count + `" min="1">
                 </div>
                 <div class="col-lg-2 col-md-1 col-sm-2 product-line-price pt-4">
                     <span class="product-line-price text-right">` + precioArticuloLinea + " " + moneda + `</span>
@@ -75,8 +75,7 @@ function recalculateCart() {
         //
         nombreArticulo = $(this).children('.product-name-and-unit-cost').children(".product-name").text();
         costoUnitario = $(this).children('.product-name-and-unit-cost').children(".product-unit-cost").text();
-        alert($(this).children('.pass-quantity input').val());
-        cantidadComprados = $(this).children('.pass-quantity input').val();
+        cantidadComprados = $(this).children('.pass-quantity').children(".itemsComprados").val();
         productosCompradosSender += nombreArticulo + " " + costoUnitario + " " + cantidadComprados + "\n";
         //
         existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
