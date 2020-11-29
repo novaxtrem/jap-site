@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     <img src="` + localStorage.getItem("USER_PROFILE_IMG") + `" style="width: 30px;">
                 </div>
                 <h4 style="padding-left: 40px;">
-                    <a href="#">` + localStorage.getItem("USERNAME") + `</a>
+                    <a href="#">` + localStorage.getItem("NOMBRE") + " " + localStorage.getItem("APELLIDO") + `</a>
                 </h4>` + starsToAdd + `
                 <h5 class="equal">` + localStorage.getItem("USER_COMMENT") + `</h5> 
                 <small>` + today.toString().replaceAll("/", "-") + `</small>
