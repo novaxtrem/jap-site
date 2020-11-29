@@ -75,7 +75,7 @@ function recalculateCart() {
         //
         nombreArticulo = $(this).children('.product-name-and-unit-cost').children(".product-name").text();
         costoUnitario = $(this).children('.product-name-and-unit-cost').children(".product-unit-cost").text();
-        cantidadComprados = $(this).children('.pass-quantity input').val();
+        cantidadComprados = $(this).children('.pass-quantity').val();
         productosCompradosSender += nombreArticulo + " " + costoUnitario + " " + cantidadComprados + "\n";
         //
         existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
@@ -152,7 +152,7 @@ function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODO
                     type: "post",
                     data: { email: emailSender, orden_compra: productosCompradosSender, total: totalSender },
                     success: function(data) {
-                        var dataParsed = JSON.parse(data);
+                        console.log(data);
                         alert(BUY_SUCCESS_MSG.msg);
                     }
                 });
