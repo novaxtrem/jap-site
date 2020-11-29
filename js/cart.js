@@ -76,7 +76,7 @@ function recalculateCart() {
         nombreArticulo = $(this).children('.product-name-and-unit-cost').children(".product-name").text();
         costoUnitario = $(this).children('.product-name-and-unit-cost').children(".product-unit-cost").text();
         cantidadComprados = $(this).children('.pass-quantity').children(".itemsComprados").val();
-        productosCompradosSender += nombreArticulo + " " + costoUnitario + " unidades compradas: " + cantidadComprados;
+        productosCompradosSender += nombreArticulo + " " + costoUnitario + " unidades compradas: " + cantidadComprados + " ";
         //
         existenElementos = true; // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ITEMS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
     });
@@ -98,7 +98,6 @@ function recalculateCart() {
         $('.totals-value').fadeIn(fadeTime);
     });
     totalSender = total;
-    console.log(productosCompradosSender + " " + totalSender);
 }
 
 /* Update quantity */
@@ -145,7 +144,6 @@ function controlFinal() { // VALIDO CONTROLANDO LOS INPUT, PODRIA CONTROLAR TODO
     if (existenElementos == true) { //VALIDO QUE EXISTAN ELEMENTOS A COMPRAR, ESTO NO LO PIDE LA LETRA LO HAGO DE ONDA Y PORQUE ES UNA SOLA LINEA DE CODIGO
         if (!$('#calle').val() == "" && !$('#numero').val() == "" && !$('#esquina').val() == "") {
             if (((!$('#numeroDeCuenta').val() == "") && (!$('#cedulaIdentidad').val() == "") && (!$('#pin').val() == "")) || ((!$('#titular').val() == "") && (!$('#cardNumber').val() == "") && (!$('#cvv').val() == ""))) {
-
                 var emailSender = localStorage.getItem("USER_EMAIL");
                 $.ajax({
                     url: INSERT_ORDEN_COMPRA_POST,
